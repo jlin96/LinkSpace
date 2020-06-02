@@ -5,3 +5,5 @@ const App = () => (
         <h1>LinkSpace</h1>
     </div>  
 )
+
+export default App;
