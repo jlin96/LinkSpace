@@ -4,8 +4,6 @@ import LoginFormContainer from '../session/login_form_container';
 import SigninFormContainer from '../session/signup_form_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNewspaper, faShareSquare, faCompass } from '@fortawesome/free-regular-svg-icons';
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-
 
 const Splash = () => {
     return (
@@ -51,6 +49,10 @@ const Splash = () => {
               <div>
                 <SigninFormContainer />
               </div>
+							<p className="splash-create-page">
+								<a href="" className="create-page-hyperlink">Create a Page</a>{" "}
+								for a celebrity, band or business.
+							</p>
             </div>
           </div>
         </main>

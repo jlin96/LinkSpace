@@ -100,6 +100,7 @@
             flex-direction: row;
             box-sizing: content-box;
             width: 980px;
+            height: 583px;
             margin: 0 auto;
             padding-top: 20px;
             padding-bottom: 20px;
@@ -239,11 +240,12 @@
 
                 .splash-signup-form {
                     display: flex;
-                    flex-direction: row;
+                    flex-direction: column;
                     font-family: Roboto, Open Sans, Verdana, sans-serif;
 
                     .signup-row-one {
                         display: flex;
+                        flex-direction: row;
                         justify-content: space-between;
                         box-sizing: content-box;
                         width: 399px;
@@ -270,6 +272,195 @@
                             width: 172px;
                             border-radius: 5px;
                         }
+                    }
+
+                    .signup-email-wrapper {
+                        box-sizing: content-box;
+                        width: 399px;
+                        height: 39px;
+                        margin-bottom: 10px;
+
+                        .signup-email {
+                            box-sizing: content-box;
+                            color: rgb(153, 153, 153);
+                            background-color: rgb(255, 255, 255);
+                            padding: 8px 10px;
+                            border: 1px solid rgb(190, 199, 216);
+                            height: 21px;
+                            width: 377px;
+                            border-radius: 5px;
+                        }
+                    }
+
+                    .signup-password-wrapper {
+                        box-sizing: content-box;
+                        width: 399px;
+                        height: 39px;
+                        margin-bottom: 10px;
+
+                        .signup-password {
+                            box-sizing: content-box;
+                            color: rgb(153, 153, 153);
+                            background-color: rgb(255, 255, 255);
+                            padding: 8px 10px;
+                            border: 1px solid rgb(190, 199, 216);
+                            height: 21px;
+                            width: 377px;
+                            border-radius: 5px;
+                        }
+                    }
+                    .signup-birthday-wrapper {
+                        display: flex;
+                        flex-direction: column;
+
+                        .signup-birthday-text {
+                            box-sizing: content-box;
+                            color: #90949C;
+                            font-family: Roboto, Open Sans, Verdana, sans-serif;
+                            font-size: 16px;
+                            margin: 10px 0px 5px;
+                            font-weight: 650;
+                            height: 21px;
+                            width: 399px;
+                        }
+
+                        .signup-birthday-selector {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+
+                            .signup-month {
+                                box-sizing: content-box;
+                                color: rgb(26, 28, 31);
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-size: 13.33px;
+                                font-weight: 400;
+                                width: 58px;
+                                height: 18px;
+                                padding: 5px;
+                                border: 1px solid rgb(204, 208, 213);
+                            }
+
+                            .signup-day {
+                                box-sizing: content-box;
+                                color: rgb(26, 28, 31);
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-size: 13.33px;
+                                font-weight: 400;
+                                width: 44px;
+                                height: 18px;
+                                padding: 5px;
+                                border: 1px solid rgb(204, 208, 213);
+                            } 
+
+                            .signup-year {
+                                box-sizing: content-box;
+                                color: rgb(26, 28, 31);
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-size: 13.33px;
+                                font-weight: 400;
+                                width: 53px;
+                                height: 18px;
+                                padding: 5px;
+                                border: 1px solid rgb(204, 208, 213);
+                            }
+                            
+                            .birthday-question-icon {
+                                box-sizing: content-box;
+                                width: 16px;
+                                height: 16px;
+                                margin-left: 10px;
+                                color: rgb(96, 103, 112)
+                            }
+                        }
+                    }
+
+                    .signup-gender-wrapper {
+                        display: flex;
+                        flex-direction: column;
+
+                        .signup-gender-text {
+                            box-sizing: content-box;
+                            color: #90949C;
+                            font-family: Roboto, Open Sans, Verdana, sans-serif;
+                            font-size: 16px;
+                            margin: 10px 0px 5px;
+                            font-weight: 650;
+                            height: 21px;
+                            width: 399px;
+                        }
+
+                        .signup-gender-selector {
+                            display: flex;
+                            flex-direction: row;
+
+                            .gender-input {
+                                margin: 3px 3px 0px 5px
+                            }
+
+                            .gender-input-text {
+                                font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                font-size: 18px;
+                                color: #1D2129;
+                                padding: 0px 10px 0px 3px
+                            }
+                        }
+                        
+                    }
+                    .signup-terms-wrapper {
+                        margin: 11px 0px;
+
+                        .signup-terms {
+                            font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+                            font-size: 11.5px;
+                            color: #777777;
+                            width: 316px;
+                            height: 42px;
+
+                            .signup-terms-hyperlink {
+                                text-decoration: underline;
+                                color: #385898;
+                            }
+                            
+                        }
+
+                    }
+
+                    .signup-button-wrapper {
+                        .signup-button {
+                            text-align: center;
+                            background: linear-gradient(#67ae55, #578843);
+                            background-color: #69a74e;
+                            box-shadow: inset 0 1px 1px #a4e388;
+                            border-color: #3b6e22 #3b6e22 #2c5115;
+                            box-sizing: content-box;
+                            margin: 10px 0px;
+                            padding: 7px 20px;
+                            height: 23px;
+                            width: 152px;
+                            text-shadow: 0 1px 2px rgba(0,0,0,.5);
+                            border: 1px solid rgb(39, 70, 22);
+                            border-radius: 5px;
+                            font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+                            font-size: 19px;
+                            color: #FFFFFF;
+                            font-weight: 600;
+                        }
+                    }
+
+                }
+
+                .splash-create-page {
+                    border-top: 1px solid #dddfe2;
+                    color: #666;
+                    font-family: Roboto, Open Sans, Verdana, sans-serif;
+                    font-size: 13px;
+                    font-weight: bold;
+                    margin-top: 10px;
+                    padding-top: 15px;
+
+                    .create-page-hyperlink {
+                        color: #385898
                     }
                 }
             }
