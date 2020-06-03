@@ -8,8 +8,8 @@ import Root from './components/root';
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   const store = configureStore();
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch; // just for testing!
+  window.getState = store.getState;
+  window.dispatch = store.dispatch; // just for testing!
   // window.login = login;
   // window.logout = logout;
   // window.login = sessionApiUtil.login;
