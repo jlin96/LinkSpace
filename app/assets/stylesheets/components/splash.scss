@@ -329,6 +329,7 @@
                     display: flex;
                     flex-direction: column;
                     font-family: Roboto, Open Sans, Verdana, sans-serif;
+                    position: relative;
 
                     .signup-row-one {
                         display: flex;
@@ -337,6 +338,8 @@
                         box-sizing: content-box;
                         width: 399px;
                         height: 49px;
+                        position: relative;
+
 
                         .signup-fname {
                             box-sizing: content-box;
@@ -375,6 +378,7 @@
                         width: 399px;
                         height: 39px;
                         margin-bottom: 10px;
+                        position: relative;
 
                         .signup-email {
                             box-sizing: content-box;
@@ -397,11 +401,39 @@
                         }
                     }
 
+                    .signup-reemail-wrapper {
+                        box-sizing: content-box;
+                        width: 399px;
+                        height: 39px;
+                        margin-bottom: 10px;
+                        position: relative;
+
+                        .signup-reemail {
+                            box-sizing: content-box;
+                            color: rgb(153, 153, 153);
+                            background-color: rgb(255, 255, 255);
+                            padding: 8px 10px;
+                            border: 1px solid rgb(190, 199, 216);
+                            height: 21px;
+                            width: 377px;
+                            border-radius: 5px;
+                        }
+                        .signup-form-focus {
+                            color: rgb(28,30,33);
+                            border: 1px solid rgb(190, 199, 216);
+                        }
+
+                        .signup-form-blur {
+                            border: 1px solid rgb(252, 13, 27);
+                        }
+                    }
+
                     .signup-password-wrapper {
                         box-sizing: content-box;
                         width: 399px;
                         height: 39px;
                         margin-bottom: 10px;
+                        position: relative;
 
                         .signup-password {
                             box-sizing: content-box;
@@ -518,6 +550,9 @@
                                 color: #1D2129;
                                 padding: 0px 10px 0px 3px
                             }
+                        }
+                        .signup-form-blur {
+                            border: 1px solid rgb(252, 13, 27);
                         }
                         
                     }
@@ -687,10 +722,154 @@
     }   
 }
 
-div .icon path {
+div .icon {
     color: rgb(183, 75, 75);
+    height: 21px;
+    transform: scale(1.355, 1.355);
 }
 
 .hidden {
     display: none;
 }   
+
+.signup-fname-icon {
+    position: absolute;
+    left: 167px;
+    top: 8.5px;
+}
+
+.signup-lname-icon {
+    position: absolute;
+    left: 372px;
+    top: 8.5px;
+}
+
+.signup-email-icon {
+    position: absolute;
+    left: 372px;
+    top: 8.5px;
+}
+
+.signup-password-icon {
+    position: absolute;
+    left: 372px;
+    top: 8.5px;
+}
+
+.signup-reemail-icon {
+    position: absolute;
+    left: 372px;
+    top: 8.5px;
+}
+
+.signup-fname-error-msg-text{
+    position: absolute;
+    font-family: Roboto, Open Sans, Verdana, sans-serif;
+    box-sizing: content-box;
+    color: #FFFFFF;
+    font-size: 13px;
+    padding: 8px;
+    background-color: #BE4B49;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(139, 3, 0, .75), 0 1px 10px rgba(0, 0, 0, .35);
+    text-align: center;
+    padding: 13px;
+    height: 17px;
+    width: 115.5px;
+    right: 418px;
+    top: -2px;
+}
+.signup-fname-error-triangle {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-top: 12px solid transparent;
+    border-left: 12px solid #BE4B49;
+    border-bottom: 12px solid transparent;
+    right: 406px;
+    top: 7px;
+    
+}
+
+.signup-email-error-msg-text{
+    position: absolute;
+    font-family: Roboto, Open Sans, Verdana, sans-serif;
+    box-sizing: content-box;
+    color: #FFFFFF;
+    font-size: 13px;
+    width: 285px;
+    height: 34px;
+    padding: 8px;
+    background-color: #BE4B49;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(139, 3, 0, .75), 0 1px 10px rgba(0, 0, 0, .35);
+    padding: 13px 28px 13px 13px;
+    right: 418px;
+    top: -2px;
+    line-height: 1.34;
+}
+.signup-email-error-triangle {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-top: 12px solid transparent;
+    border-left: 12px solid #BE4B49;
+    border-bottom: 12px solid transparent;
+    right: 406px;
+    top: 7px;
+}
+
+.signup-password-error-msg-text{
+    position: absolute;
+    font-family: Roboto, Open Sans, Verdana, sans-serif;
+    box-sizing: content-box;
+    color: #FFFFFF;
+    font-size: 13px;
+    width: 285px;
+    height: 34px;
+    padding: 8px;
+    background-color: #BE4B49;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(139, 3, 0, .75), 0 1px 10px rgba(0, 0, 0, .35);
+    padding: 13px 28px 13px 13px;
+    right: 418px;
+    top: -2px;
+}
+.signup-password-error-triangle {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-top: 12px solid transparent;
+    border-left: 12px solid #BE4B49;
+    border-bottom: 12px solid transparent;
+    right: 406px;
+    top: 7px;
+}
+
+.signup-reemail-error-msg-text{
+    position: absolute;
+    font-family: Roboto, Open Sans, Verdana, sans-serif;
+    box-sizing: content-box;
+    color: #FFFFFF;
+    font-size: 13px;
+    width: 214px;
+    height: 17px;
+    padding: 8px;
+    background-color: #BE4B49;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(139, 3, 0, .75), 0 1px 10px rgba(0, 0, 0, .35);
+    padding: 13px 28px 13px 13px;
+    right: 418px;
+    top: -2px;
+    line-height: 1.34;
+}
+.signup-reemail-error-triangle {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-top: 12px solid transparent;
+    border-left: 12px solid #BE4B49;
+    border-bottom: 12px solid transparent;
+    right: 406px;
+    top: 7px;
+}

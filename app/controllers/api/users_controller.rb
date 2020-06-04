@@ -7,7 +7,23 @@ class Api::UsersController < ApplicationController
             login!(@user)
             render :show
         else
-            render json: ['Your password must be at least 6 characters long. Please try another.'], status: 422
+            emptyField = [];
+            if params[:user][:first_name] == '' 
+                emptyField << 'fname'
+            end
+            if params[:user][:last_name] == ''
+                emptyField << 'lname'
+            end
+            if params[:user][:password] == ''
+                emptyField << 'password'
+            end
+            if params[:user][:email] == ''
+                emptyField << 'email'
+            end
+            if params[:user][:gender] == ''
+                emptyField << 'gender'
+            end
+            render json: ['Your password must be at least 6 characters long. Please try another.', emptyField], status: 422
         end
     end
 
