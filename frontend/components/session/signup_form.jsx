@@ -33,7 +33,6 @@ class SignupForm extends React.Component {
 
     signUpPasswordError() {
       if (this.props.signupErrors[0] && this.props.signupErrors[1]) {
-        // debugger
         if (this.props.signupErrors[1].includes('password') === false) {
           return this.props.signupErrors[0].includes('characters') ? 
             <div className="signup-password-error">
