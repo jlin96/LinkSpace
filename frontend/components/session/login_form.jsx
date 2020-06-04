@@ -5,9 +5,27 @@ class LoginForm extends React.Component{
         super(props);
         this.state = {email: '', password: ''}
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.userError = this.userError.bind(this);
     }
 
-     handleChange(field) {
+    userError() {
+      if (this.props.loginErrors[0]) {
+        return this.props.loginErrors[0].includes('email') ? 
+          <>
+            <div className="login-email-error">
+              {this.props.loginErrors[0]}
+              <span className="login-email-error-bold"> Sign up for an account.</span>
+            </div> 
+            <div className="login-email-triangle">
+            </div>
+          </>
+          : <div></div>;
+      }
+    }
+
+    passwordError() {}
+
+    handleChange(field) {
         return e => {
             this.setState({ [field]: e.target.value});
         }
@@ -21,6 +39,7 @@ class LoginForm extends React.Component{
     render() {
         return (
           <>
+            <div className="login-email-error-wrapper">{this.userError()}</div>
             <form className="splash-login-form" onSubmit={this.handleSubmit}>
               <span className="label-wrapper">
                 <label className="login-email"> Email or Phone </label>
@@ -30,7 +49,6 @@ class LoginForm extends React.Component{
                   onChange={this.handleChange("email")}
                 />
               </span>
-
               <span className="label-wrapper">
                 <label className="login-password">Password</label>
                 <input

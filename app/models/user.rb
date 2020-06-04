@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
-        return ['The email you\'ve entered does not match any account. Sign up for an account.'] unless user
+        return ['The email you\'ve entered does not match any account.'] unless user
         user.is_password?(password) ? user : ['The password you\'ve entered is incorrect. Forget Password?']
     end
 

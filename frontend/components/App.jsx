@@ -1,12 +1,11 @@
 import React from 'react';
 import Splash from './splash/splash';
-import SignupContainer from './session/signup_form_container';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-    <div>
-        <Splash />
-
-    </div>  
-)
+  <div>
+    <AuthRoute exact path="/" component={Splash} />
+  </div>
+);
 
 export default App;

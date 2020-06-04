@@ -11,6 +11,7 @@ class SignupForm extends React.Component {
             email: '', 
             re_email:'', 
             password: '', 
+            birthday:'',
             month: '6', 
             day: '3', 
             year: '1995', 
@@ -22,21 +23,25 @@ class SignupForm extends React.Component {
 
     isValidEmail() {
         return this.state.email.includes('.com') ?
-                <div className="signup-email-wrapper">
-                <input
-                    className="signup-email"
-                    type="text"
-                    placeholder="Re-enter email"
-                    onClick={this.handleClick}
-                    onChange={this.handleChange("re_email")}
-                />
-                </div> : <div></div>;
+          <div className="signup-email-wrapper">
+          <input
+              className="signup-email"
+              type="text"
+              placeholder="Re-enter email"
+              onFocus={this.handleClick}
+              onChange={this.handleChange("re_email")}
+          />
+          </div> : <div></div>;
     }
 
     handleChange(field) {
         return e => {
             this.setState({ [field]: e.target.value});
-
+            if(field === 'month' || field === 'day' || field === 'year') {
+                this.setState({
+                  birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
+                });
+            }
         }
     }
 
@@ -48,7 +53,9 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.signup(this.state);
+        if(this.state.email === this.state.re_email) {
+            this.props.signup(this.state);
+        }
     }
 
     render() {
@@ -84,15 +91,15 @@ class SignupForm extends React.Component {
                   className="signup-fname"
                   type="text"
                   placeholder="First name"
-                  onClick={this.handleClick}
+                  onFocus={this.handleClick}
                   onChange={this.handleChange("first_name")}
                 />
                 <input
                   className="signup-lname"
                   type="text"
                   placeholder="Last name"
-                  onClick={this.handleClick}
-                  onChange={this.handleChange("first_name")}
+                  onFocus={this.handleClick}
+                  onChange={this.handleChange("last_name")}
                 />
               </div>
 
@@ -101,7 +108,7 @@ class SignupForm extends React.Component {
                   className="signup-email"
                   type="text"
                   placeholder="Mobile number or email"
-                  onClick={this.handleClick}
+                  onFocus={this.handleClick}
                   onChange={this.handleChange("email")}
                 />
               </div>
@@ -112,7 +119,7 @@ class SignupForm extends React.Component {
                   className="signup-password"
                   type="password"
                   placeholder="New password"
-                  onClick={this.handleClick}
+                  onFocus={this.handleClick}
                   onChange={this.handleChange("password")}
                 />
               </div>
