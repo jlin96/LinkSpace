@@ -20,7 +20,7 @@ class SignupForm extends React.Component {
             email_counter: 0,
             password_counter: 0,
             reemail_counter: 0}
-        this.passwordError = this.passwordError.bind(this);
+        this.signUpPasswordError = this.signUpPasswordError.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
@@ -31,12 +31,14 @@ class SignupForm extends React.Component {
 
     }
 
-    passwordError() {
-      if (this.props.signupErrors[0] && (!this.props.signupErrors[1].includes('password'))) {
-        return this.props.signupErrors[0].includes('characters') ? 
-          <div className="signup-password-error">
-            {this.props.signupErrors[0]}
-          </div> : <div></div>;
+    signUpPasswordError() {
+      if (this.props.signupErrors[0] && this.props.signupErrors[1]) {
+        if (this.props.signupErrors[1].includes('password') === true) {
+          return this.props.signupErrors[0].includes('characters') ? 
+            <div className="signup-password-error">
+              {this.props.signupErrors[0]}
+            </div> : <div></div>;
+        }
       }
     }
 
@@ -208,7 +210,7 @@ class SignupForm extends React.Component {
         return (
           <>
             <div className="signup-password-error-wrapper">
-              {this.passwordError()}
+              {this.signUpPasswordError()}
             </div>
             <form className="splash-signup-form" onSubmit={this.handleSubmit}>
               <div className="signup-row-one">
