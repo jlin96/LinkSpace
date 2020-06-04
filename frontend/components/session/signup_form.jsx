@@ -11,7 +11,7 @@ class SignupForm extends React.Component {
             email: '', 
             re_email:'', 
             password: '', 
-            birthday:'',
+            birthday:'1995-6-3',
             month: '6', 
             day: '3', 
             year: '1995', 
@@ -175,6 +175,7 @@ class SignupForm extends React.Component {
     
     handleSubmit(e) {
         e.preventDefault();
+        debugger
         if(this.state.email === this.state.re_email) {
             this.props.signup(this.state);
         }
