@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import { faQuestionCircle, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 class SignupForm extends React.Component {
     constructor(props){
@@ -16,22 +16,37 @@ class SignupForm extends React.Component {
             day: '3', 
             year: '1995', 
             gender: ''}
+        this.passwordError = this.passwordError.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
         this.isValidEmail = this.isValidEmail.bind(this);
     }
 
+    passwordError() {
+      if (this.props.signupErrors[0]) {
+        return this.props.signupErrors[0].includes('characters') ? 
+          <div className="signup-password-error">
+            {this.props.signupErrors[0]}
+          </div> : <div></div>;
+      }
+    }
+
     isValidEmail() {
-        return this.state.email.includes('.com') ?
+        return this.state.email.includes(".com") ? (
           <div className="signup-email-wrapper">
-          <input
+            <input
               className="signup-email"
               type="text"
               placeholder="Re-enter email"
-              onFocus={this.handleClick}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
               onChange={this.handleChange("re_email")}
-          />
-          </div> : <div></div>;
+            />
+          </div>
+        ) : (
+          <div></div>
+        );
     }
 
     handleChange(field) {
@@ -45,12 +60,42 @@ class SignupForm extends React.Component {
         }
     }
 
-    handleClick(e) {
-        $(e.target).css({
-            'color': 'rgb(28,30,33)'
-        })
+    handleFocus(e) {
+        let class_name = "";
+        if (e.target.classList.value.includes("fname")) {
+          class_name = "fname";
+        } else if (e.target.classList.value.includes("lname")) {
+          class_name = "fname";
+        } else if (e.target.classList.value.includes("email")) {
+          class_name = "email";
+        } else if (e.target.classList.value.includes("password")) {
+          class_name = "password";
+        }
+        $(`div.signup-${class_name}-icon`).addClass("hidden");
+        e.target.classList.remove("signup-form-blur");
+        e.target.classList.add("signup-form-focus");
     }
 
+    handleBlur(e) {
+      let class_name= '';
+      if (e.target.classList.value.includes("fname")) {
+        class_name = 'fname';
+      } else if (e.target.classList.value.includes("lname")) {
+        class_name = 'fname';
+      } else if (e.target.classList.value.includes("email")) {
+        class_name = 'email';
+      } else if (e.target.classList.value.includes("password")) {
+        class_name = 'password';
+      }
+
+      if (e.target.value.length === 0) {
+        e.target.classList.remove("signup-form-focus");
+        e.target.classList.add("signup-form-blur");
+        $(`div.signup-${class_name}-icon`).removeClass("hidden");
+        // signup - fname - icon;
+      }
+    }
+    
     handleSubmit(e) {
         e.preventDefault();
         if(this.state.email === this.state.re_email) {
@@ -85,20 +130,28 @@ class SignupForm extends React.Component {
 
         return (
           <>
+            <div className="signup-password-error-wrapper">
+              {this.passwordError()}
+            </div>
             <form className="splash-signup-form" onSubmit={this.handleSubmit}>
               <div className="signup-row-one">
                 <input
                   className="signup-fname"
                   type="text"
                   placeholder="First name"
-                  onFocus={this.handleClick}
+                  onFocus={this.handleFocus}
+                  onBlur={this.handleBlur}
                   onChange={this.handleChange("first_name")}
                 />
+                <div className="signup-fname-icon hidden">
+                  <FontAwesomeIcon className="icon" icon={faExclamationCircle} />
+                </div>
                 <input
                   className="signup-lname"
                   type="text"
                   placeholder="Last name"
-                  onFocus={this.handleClick}
+                  onFocus={this.handleFocus}
+                  onBlur={this.handleBlur}
                   onChange={this.handleChange("last_name")}
                 />
               </div>
@@ -108,7 +161,8 @@ class SignupForm extends React.Component {
                   className="signup-email"
                   type="text"
                   placeholder="Mobile number or email"
-                  onFocus={this.handleClick}
+                  onFocus={this.handleFocus}
+                  onBlur={this.handleBlur}
                   onChange={this.handleChange("email")}
                 />
               </div>
@@ -119,7 +173,8 @@ class SignupForm extends React.Component {
                   className="signup-password"
                   type="password"
                   placeholder="New password"
-                  onFocus={this.handleClick}
+                  onFocus={this.handleFocus}
+                  onBlur={this.handleBlur}
                   onChange={this.handleChange("password")}
                 />
               </div>

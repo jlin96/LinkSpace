@@ -13,7 +13,7 @@ const Splash = () => {
             <div className="splash-logo">
               <p>linkspace</p>
             </div>
-            <div className="splash-login-wrapper">
+            <div>
 							<LoginFormContainer />
             </div>
           </div>
