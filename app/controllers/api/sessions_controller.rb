@@ -1,12 +1,13 @@
 class Api::SessionsController < ApplicationController
-    def create
-        @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+    skip_before_action :verify_authenticity_token
 
+    def create
+        @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
         if @user.is_a? Array
-            login!(@user)
             render json: @user, status: 401
         else
-            render 'api/user/show'
+            login!(@user)
+            render 'api/users/show'
         end
     end
 
