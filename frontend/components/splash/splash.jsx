@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import LoginFormContainer from '../session/login_form_container';
 import SigninFormContainer from '../session/signup_form_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

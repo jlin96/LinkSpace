@@ -1,0 +1,109 @@
+.newsfeed {
+    background-color: rgb(240, 242, 245);
+}
+.newsfeed-nav-bar {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    border-bottom: 1px solid rgb(221, 223, 226);
+
+    .newsfeed-nav-logo {
+        height: 40px;
+        width: 40px;
+        margin-left: 16px;
+        margin-right: 10px;
+    }
+    
+    .newsfeed-nav-search-bar-wrapper {
+        position: relative;
+
+        .newsfeed-nav-search-bar {
+            box-sizing: content-box;
+            background-color: rgb(240, 242, 245);
+            height: 24px;
+            width: 208px;
+            color: rgb(107,109,113);
+            padding: 7px 16px 9px 16px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            font-family: Roboto, Open Sans, Verdana, sans-serif;
+        }
+
+        .nav-search-bar-glasses {
+            font-size: 13px;
+            color: rgb(98,105, 114);
+            position: relative;
+            right: 226px;
+            pointer-events: none;
+            transform: scaleY(1.06);
+        }
+    }
+
+    .newsfeed-nav-main {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: rgb(101, 103, 107);
+        padding: 0px 57px 0px 57px;
+
+        .nav-main {
+            box-sizing: content-box;
+            height: 56px;
+            width: 129.6px;
+            padding-top: 3px;
+            margin-right: 9px;
+
+            .nav-main-inner-button {
+                width: 129.6px;
+                height: 52px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .nav-main-inner-button:hover {
+            background-color: rgb(240, 242, 245);
+            height: 52px;
+            border-radius: 7px;
+        }
+        .nav-icons {
+            font-size: 23px;
+            pointer-events: none;
+        }
+    }
+}
+
+.icon-selected {
+    color: rgb(34, 123, 239);
+}
+
+.last-nav-main-li {
+    margin-right: 0px;
+}
+
+.nav-main-primary-bottom { 
+    box-sizing: content-box;
+    border-bottom: 1px solid rgb(56, 135, 240);
+    height: 56px;
+    width: 129.6px;
+    padding-top: 3px;
+    margin-right: 9px;
+    display: flex;
+    align-items: center;
+
+    .nav-main-secondary-bottom { 
+        box-sizing: content-box;
+        width: 129.6px;
+        height: 51px;
+        padding-bottom: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 2px solid rgb(34, 123, 239);
+    }
+}
