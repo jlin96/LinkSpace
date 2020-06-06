@@ -109,7 +109,7 @@ class NewsfeedNav extends React.Component {
     createDropdownMenu() {
       if(this.state.showDropDown) {
         const { logout } = this.props;
-        return <AccountDropdown className={this.state.dropdown}currentUser={this.props.users[this.props.currentUser]} logout={logout}/>;
+        return <AccountDropdown className={this.state.dropdown} currentUser={this.props.users[this.props.currentUser]} logout={logout}/>;
       }
     }
 

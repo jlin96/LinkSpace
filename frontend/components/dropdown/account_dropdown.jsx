@@ -32,7 +32,12 @@ class AccountDropdown extends React.Component {
             greater_than: 'dropdown-greater-than',
             logout: 'dropdown-logout'
         }
+        this.logoutUser = this.logoutUser.bind(this);
 
+    }
+
+    logoutUser () {
+        this.props.logout();
     }
 
     render() {
@@ -137,7 +142,7 @@ class AccountDropdown extends React.Component {
                             </div>
                         </div>
 
-                        <div className={this.state.dropdown_outer_wrapper}>
+                        <div className={this.state.dropdown_outer_wrapper} onClick={this.logoutUser}>
                             <div className={this.state.dropdown_inner_wrapper}>
                                 <div className={this.state.dropdown_components}>
                                     <div className={this.state.dropdown_icon_container}>
