@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import AccountDropdown from '../dropdown/account_dropdown';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faHome, faTv, faStore, faUsers, faSortDown, faBell} from "@fortawesome/free-solid-svg-icons";
 import { faFlag} from '@fortawesome/free-regular-svg-icons';
@@ -7,11 +8,16 @@ import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 class NewsfeedNav extends React.Component {
     constructor(props){
         super(props);
-        this.state = {currentHover: '', shown: false};
+      this.state = { currentHover: "", shown: false, showDropDown: false, glasses_icon: "nav-search-bar-glasses"};
         this.handleClick = this.handleClick.bind(this);
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
         this.iconMessage = this.iconMessage.bind(this);
+        this.dropdownMenu = this.dropdownMenu.bind(this);
+        this.createDropdownMenu = this.createDropdownMenu.bind(this);
+        this.addHiddenToGlasses = this.addHiddenToGlasses.bind(this);
+        this.removeHiddenGlasses = this.removeHiddenGlasses.bind(this);
+        this.addHiddenToDropdown = this.addHiddenToDropdown.bind(this);
     }
 
     handleClick(e) {
@@ -44,17 +50,15 @@ class NewsfeedNav extends React.Component {
         setTimeout(
           function () {
             let cTime = Date.now();
-            if (cTime - this.state.endTime >= 500) {
+            if (cTime - beforeTime >= 500) {
                this.setState({ currentHover: currentIcon, shown: true });
             } 
-          }.bind(this),
-          500
-        );
+          }.bind(this), 500);
     }
 
 
     handleMouseLeave (e) {
-        this.setState({endTime: Date.now(), shown: false})
+        this.setState({shown: false})
     }
 
     iconMessage() {
@@ -98,18 +102,41 @@ class NewsfeedNav extends React.Component {
        return <div></div>
     }
 
+    dropdownMenu () {
+      this.setState({showDropDown: true});
+    }
+
+    createDropdownMenu() {
+      if(this.state.showDropDown) {
+        const { logout } = this.props;
+        return <AccountDropdown className={this.state.dropdown}currentUser={this.props.users[this.props.currentUser]} logout={logout}/>;
+      }
+    }
+
+    addHiddenToGlasses() {
+      this.setState({ glasses_icon: 'nav-search-bar-glasses hiddenGlasses'})
+    }
+
+    removeHiddenGlasses() { 
+      this.setState({ glasses_icon: 'nav-search-bar-glasses' })
+    }
+
+    addHiddenToDropdown() {
+      this.setState({ showDropDown: false })
+    }
+
     render() {
         return (
           <header className="newsfeed-nav-bar">
             <img src={window.main_logo} className="newsfeed-nav-logo" />
-            <div className="newsfeed-nav-search-bar-wrapper">
+            <div className="newsfeed-nav-search-bar-wrapper" onClick={this.addHiddenToGlasses} onBlur={this.removeHiddenGlasses}>
               <input
                 type="text"
                 className="newsfeed-nav-search-bar"
                 placeholder="     Search Facebook"
               />
               <FontAwesomeIcon
-                className="nav-search-bar-glasses"
+                className={this.state.glasses_icon}
                 icon={faSearch}
               />
             </div>
@@ -177,6 +204,15 @@ class NewsfeedNav extends React.Component {
 
             <div className="newsfeed-nav-user-nav">
               <div className="user-nav-components">
+
+                <div className="user-profile-headshot">
+                  <img className="newsfeed-headshot"src={window.headshot} />
+                  <div className="newsfeed-name">
+                    {this.props.users[this.props.currentUser].first_name}
+                    {/* Jes */}
+                  </div>
+                </div>
+
                 <button
                   type="submit"
                   className="user-components user-components-left-spacing create"
@@ -211,14 +247,17 @@ class NewsfeedNav extends React.Component {
                 </button>
                 <button
                   type="submit"
-                  className="user-components user-components-left-spacing account"
+                  className="user-components user-components-left-spacing account user-component-account"
                   onMouseEnter={this.handleMouseEnter}
                   onMouseLeave={this.handleMouseLeave}
+                  onClick={this.dropdownMenu}
+                  onBlur={this.addHiddenToDropdown}
                 >
                   <FontAwesomeIcon
                     icon={faSortDown}
                     className="user-component-icon icon-arrow-down"
                   />
+                  {this.createDropdownMenu()}
                 </button>
               </div>
             </div>

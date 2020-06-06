@@ -18,6 +18,8 @@
     
     .newsfeed-nav-search-bar-wrapper {
         position: relative;
+        display: flex;
+        align-items: center;
 
         .newsfeed-nav-search-bar {
             box-sizing: content-box;
@@ -41,6 +43,10 @@
             pointer-events: none;
             transform: scaleY(1.06);
         }
+
+        .hiddenGlasses {
+            visibility: hidden;
+        }
     }
 
     .newsfeed-nav-main {
@@ -48,7 +54,7 @@
         flex-direction: row;
         align-items: center;
         color: rgb(101, 103, 107);
-        padding: 0px 57px 0px 57px;
+        padding: 0px 0px 0px 57px;
 
         .nav-main {
             box-sizing: content-box;
@@ -129,7 +135,277 @@
             }
 
             .user-components-left-spacing {
-                margin-left: 10px;
+                margin-left: 8px;
+            }
+
+            .user-profile-headshot {
+                padding: 3px 12px 3px 4px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                border-radius: 30px;
+
+                .newsfeed-name {
+                    margin-left: 7px;
+                    font-family: Roboto, Open Sans, Verdana, sans-serif;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #050505;
+                }
+
+                .newsfeed-headshot {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 30px;
+                }
+            }
+
+            .user-profile-headshot:hover {
+                background-color: #f2f2f2;
+            }
+
+            .user-component-account {
+                position: relative;
+
+                .dropdown-menu-shadow-top {
+                    position: absolute;
+                    right: 0px;
+                    top: 45px;
+                    box-shadow:
+                        0 -2px 1px rgba(0, 0, 0, 0.010),
+                        0 -4px 3px rgba(0, 0, 0, 0.013),
+                        0 -6px 4px rgba(0, 0, 0, 0.016),
+                        0 -13px 5px rgba(0, 0, 0, 0.019);
+                    border-radius: 5px;
+
+                    .dropdown-menu {
+                        background-color: rgb(255, 255, 255);
+                        z-index: 3;
+                        box-shadow:
+                            0 2.3px 1.9px rgba(0, 0, 0, 0.013),
+                            0 5.4px 4.3px rgba(0, 0, 0, 0.014),
+                            0 9.7px 7.7px rgba(0, 0, 0, 0.015),
+                            0 16.1px 12.8px rgba(0, 0, 0, 0.018),
+                            0 26.5px 21.2px rgba(0, 0, 0, 0.026),
+                            0 46.2px 37px rgba(0, 0, 0, 0.042),
+                            0 100px 80px rgba(0, 0, 0, 0.07);
+                        border-radius: 5px;
+
+                        .dropdown-components-outer-wrapper {
+                            padding: 0px 8px;
+
+                            .dropdown-components-inner-wrapper {
+                                padding: 8px 8px;
+                                width: 328px;
+                                border-radius: 5px;
+
+                                .dropdown-components {
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+
+                                    .dropdown-user-profile-picture {
+                                        height: 60px;
+                                        width: 60px;
+                                        border-radius: 60px;
+                                    }
+
+                                    .dropdown-user-name-wrapper {
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-content: space-between;
+                                        margin: 7px 0px 10px 12px;
+                                        height: 40px;
+                                        width: 256px;
+
+                                        .dropdown-user-name {
+                                            font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                            font-size: 17px;
+                                            font-weight: 500;
+                                            padding-bottom: 1.5px;
+                                            color: #050505;
+                                            font-weight: 500;
+                                        }
+
+                                        .dropdown-see-profile {
+                                            font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                            font-size: 15px;
+                                            color: #65676B;
+                                            padding-top: 1.5px;
+                                        }
+                                    }
+
+                                    .dropdown_icon_container {
+                                        height: 36px;
+                                        width: 36px;
+                                        border-radius: 36px;
+                                        background-color: rgb(228, 230, 235);
+                                        margin-right: 12px;
+                                        position: relative;
+
+                                        .dropdown-icon-comment-alt {
+                                            position: absolute;
+                                            color: rgb(96, 103, 112);
+                                            font-size: 20px;
+                                            bottom: 7px;
+                                            left: 8px;
+                                        }
+
+                                        .dropdown-icon-exclamation {
+                                            position: absolute;
+                                            color: rgb(228, 230, 235);
+                                            font-size: 10px;
+                                            bottom: 14px;
+                                            left: 16px;
+                                        }
+
+                                        .dropdown-icon-cog {
+                                            position: absolute;
+                                            font-size: 20px;
+                                            color: rgb(96, 103, 112);
+                                            bottom: 8px;
+                                            left: 8px;
+                                        }
+
+                                        .dropdown-icon-question-circle {
+                                            position: absolute;
+                                            font-size: 20px;
+                                            color: rgb(96, 103, 112);
+                                            bottom: 8px;
+                                            left: 8px;
+                                        }
+
+                                        .dropdown-icon-signout {
+                                            position: absolute;
+                                            font-size: 20px;
+                                            color: rgb(96, 103, 112);
+                                            bottom: 8px;
+                                            left: 8px;
+                                        }
+
+                                    }
+
+                                    .dropdown-feedback-wrapper {
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-content: space-between;
+
+                                        .dropdown-feedback {
+                                            font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                            font-size: 15px;
+                                            color: #050505;
+                                        }
+
+                                        .dropdown-improve-facebook {
+                                            font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                            font-size: 13px;
+                                            color: #65676B;
+                                        }
+                                    }
+
+                                    .dropdown-last-single-row {
+                                        display: flex;
+                                        flex-direction: row;
+                                        width: 280px;
+                                        justify-content: space-between;
+                                        align-items: center;
+
+                                        .dropdown-single-row-font {
+                                            font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                            font-size: 15px;
+                                            color: #050505;
+                                        }
+
+                                        .dropdown-greater-than {
+                                            font-family: Nunito, Open Sans, Verdana, sans-serif;
+                                            font-size: 22px;
+                                            color: rgb(96, 103, 112);
+                                            transform: scale(1, 1.9);
+                                            font-weight: 300;
+                                        }
+
+                                        .switch {
+                                            position: relative;
+                                            display: inline-block;
+                                            width: 52px;
+                                            height: 29px;
+                                            }
+
+                                        .switch input { 
+                                            opacity: 0;
+                                            width: 0;
+                                            height: 0;
+                                            }
+
+                                        .slider {
+                                            position: absolute;
+                                            cursor: pointer;
+                                            top: 0;
+                                            left: 0;
+                                            right: 0;
+                                            bottom: 0;
+                                            background-color: rgb(206, 208, 212);
+                                            -webkit-transition: .2s;
+                                            transition: .2s;
+                                        }
+
+                                        .slider:before {
+                                            position: absolute;
+                                            content: "";
+                                            height: 25px;
+                                            width: 25px;
+                                            left: 2px;
+                                            bottom: 1.5px;
+                                            background-color: rgb(255, 255, 255);
+                                            -webkit-transition: .2s;
+                                            transition: .2s;
+                                        }
+
+                                        input:checked + .slider {
+                                            background-color: rgb(53, 140, 252);
+                                        }
+
+                                        input:checked + .slider:before {
+                                            -webkit-transform: translateX(23px);
+                                            -ms-transform: translateX(23px);
+                                            transform: translateX(23px);
+                                        }
+
+                                        .slider.round {
+                                            border-radius: 33px;    
+                                        }
+
+                                        .slider.round:before {
+                                            border-radius: 100%;
+                                        }
+                                    }
+
+                                    .dropdown-logout {
+                                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                        font-size: 15px;
+                                        color: #050505;
+                                    }
+                                }
+                                
+                            }
+
+                            .dropdown-components-inner-wrapper:hover {
+                                background-color: rgb(240, 242, 245);
+                            }
+                        }
+                        
+                        .dropdown-components-user-outer-wrapper {
+                            padding-top: 8px;
+                            width: 344px;
+                        }
+
+                        .dropdown-divider {
+                            width: 328px;
+                            border: 1px solid rgb(206, 208, 212);
+                            margin: 8px 16px;
+                        }
+                    }
+                }
             }
         }
 
@@ -137,6 +413,7 @@
             background-color: #d8dadf;
             cursor: pointer;
         }
+
     }
 
     .icon-messages {
