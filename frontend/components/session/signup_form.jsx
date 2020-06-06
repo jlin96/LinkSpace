@@ -19,7 +19,8 @@ class SignupForm extends React.Component {
             fname_counter: 0,
             email_counter: 0,
             password_counter: 0,
-            reemail_counter: 0}
+            reemail_counter: 0,
+          existing_email: 'signup-email-exist-error-msg hidden'}
         this.signUpPasswordError = this.signUpPasswordError.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
@@ -33,7 +34,7 @@ class SignupForm extends React.Component {
 
     signUpPasswordError() {
       if (this.props.signupErrors[0] && this.props.signupErrors[1]) {
-        if (this.props.signupErrors[1].includes('password') === false) {
+        if (this.props.signupErrors[1].includes('passwordLess') === true) {
           return this.props.signupErrors[0].includes('characters') ? 
             <div className="signup-password-error">
               {this.props.signupErrors[0]}
@@ -48,6 +49,8 @@ class SignupForm extends React.Component {
           this.props.signupErrors[1].forEach((ele) => {
             if (ele === 'gender') {
               $(`div.signup-${ele}-selector`).addClass("signup-form-blur");
+            } else if (ele == 'emailExist') {
+              this.setState({ existing_email: 'signup-email-exist-error-msg'})
             } else {
               if (ele === "fname") {
                 this.setState({ fname_counter: this.state.fname_counter + 1 });
@@ -117,6 +120,7 @@ class SignupForm extends React.Component {
     }
     
     handleFocus(e) {
+    
         let class_name = "";
         if (e.target.classList.value.includes("fname")) {
           class_name = "fname";
@@ -145,6 +149,10 @@ class SignupForm extends React.Component {
         $(`div.signup-${class_name}-icon`).addClass("hidden");
         e.target.classList.remove("signup-form-blur");
         e.target.classList.add("signup-form-focus");
+
+      if (this.state.existing_email === 'signup-email-exist-error-msg') {
+        this.setState({ existing_email: 'signup-email-exist-error-msg hidden'})
+      }
     }
 
     handleBlur(e) {
@@ -271,6 +279,12 @@ class SignupForm extends React.Component {
                   <span className="signup-email-error-msg-text">
                     You'll use this when you log in and if you ever need to
                     reset your password.
+                  </span>
+                  <div className="signup-email-error-triangle"></div>
+                </div>
+                <div className={this.state.existing_email}>
+                  <span className="signup-email-error-msg-text">
+                    The email you've entered already exist, please enter another email.
                   </span>
                   <div className="signup-email-error-triangle"></div>
                 </div>

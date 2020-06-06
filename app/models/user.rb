@@ -12,7 +12,13 @@ class User < ApplicationRecord
         user.is_password?(password) ? user : ['The password you\'ve entered is incorrect.']
     end
 
-     def password=(password)
+    def self.email_exist(email)
+        user = User.find_by(email: email)
+        return false unless user
+        return true
+    end
+
+    def password=(password)
         @password = password
         self.password_digest = BCrypt::Password.create(password)
     end

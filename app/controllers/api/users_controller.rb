@@ -23,6 +23,12 @@ class Api::UsersController < ApplicationController
             if params[:user][:gender] == ''
                 emptyField << 'gender'
             end
+            if params[:user][:password].length < 6
+                emptyField << 'passwordLess'
+            end
+            if User.email_exist(params[:user][:email]) 
+                emptyField << 'emailExist'
+            end
             render json: ['Your password must be at least 6 characters long. Please try another.', emptyField], status: 422
         end
     end
