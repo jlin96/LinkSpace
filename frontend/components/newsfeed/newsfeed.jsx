@@ -1,10 +1,10 @@
 import React from 'react';
-import NewsfeedNav from './newsfeed_nav';
+import NavBar from '../navbar/navbar';
 
 const Newsfeed = ({ currentUser, users, logout }) => {
   return (
     <div className="newsfeed">
-      <NewsfeedNav currentUser={currentUser} users={users} logout={logout}/>
+      <NavBar currentUser={currentUser} users={users} logout={logout}/>
     </div>
   );
 };

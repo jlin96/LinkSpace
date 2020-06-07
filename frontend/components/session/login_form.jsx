@@ -11,7 +11,7 @@ class LoginForm extends React.Component{
 
     userError() {
       if (this.props.loginErrors[0]) {
-        return this.props.loginErrors[0].includes('email') ? 
+        return this.props.loginErrors[0].includes('account') ? 
           <>
             <div className="login-email-error">
               {this.props.loginErrors[0]}

@@ -1,6 +1,5 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { } from '@fortawesome/free-regular-svg-icons';
 import { faExclamation, faCommentAlt, faCog, faSignOutAlt, faQuestionCircle} from "@fortawesome/free-solid-svg-icons";
 class AccountDropdown extends React.Component {
     constructor(props) {

@@ -5,7 +5,7 @@ import { faSearch, faHome, faTv, faStore, faUsers, faSortDown, faBell} from "@fo
 import { faFlag} from '@fortawesome/free-regular-svg-icons';
 import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 
-class NewsfeedNav extends React.Component {
+class NavBar extends React.Component {
     constructor(props){
         super(props);
       this.state = { currentHover: "", shown: false, showDropDown: false, glasses_icon: "nav-search-bar-glasses"};
@@ -267,4 +267,4 @@ class NewsfeedNav extends React.Component {
     }
 }
 
-export default NewsfeedNav;
+export default NavBar;

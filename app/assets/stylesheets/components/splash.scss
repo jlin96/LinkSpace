@@ -170,7 +170,7 @@
             flex-direction: row;
             box-sizing: content-box;
             width: 980px;
-            height: 583px;
+            // height: 583px;
             margin: 0 auto;
             padding-top: 20px;
             padding-bottom: 20px;
@@ -610,6 +610,7 @@
                     font-weight: bold;
                     margin-top: 10px;
                     padding-top: 15px;
+                    padding-bottom: 46px;
 
                     .create-page-hyperlink {
                         color: #385898

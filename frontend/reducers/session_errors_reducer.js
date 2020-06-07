@@ -4,7 +4,6 @@ const _default = [];
 
 const sessionErrorsReducers = (state = _default, action) => {
     Object.freeze(state);
-
     switch(action.type) {
         case SESSION_ERRORS:
             return Object.assign({}, action.errors);

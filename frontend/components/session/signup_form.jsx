@@ -33,39 +33,44 @@ class SignupForm extends React.Component {
     }
 
     signUpPasswordError() {
-      if (this.props.signupErrors[0] && this.props.signupErrors[1]) {
-        if (this.props.signupErrors[1].includes('passwordLess') === true) {
-          return this.props.signupErrors[0].includes('characters') ? 
+      if (this.props.signupErrors[0]) {
+        if (this.props.signupErrors[0].includes('passwordLess') === true) {
+          return this.props.signupErrors[0].includes('passwordLess') ? 
             <div className="signup-password-error">
-              {this.props.signupErrors[0]}
+              Your password must be at least 6 characters long. Please try another.
             </div> : <div></div>;
         }
       }
     }
 
     handleErrors() {
+      debugger
       if(this.error_rendered === false) {
-        if (this.props.signupErrors[1]) {
-          this.props.signupErrors[1].forEach((ele) => {
-            if (ele === 'gender') {
-              $(`div.signup-${ele}-selector`).addClass("signup-form-blur");
-            } else if (ele == 'emailExist') {
-              this.setState({ existing_email: 'signup-email-exist-error-msg'})
-            } else {
-              if (ele === "fname") {
-                this.setState({ fname_counter: this.state.fname_counter + 1 });
-              } else if (ele === "lname") {
-                this.setState({ lname_counter: this.state.lname_counter + 1 });
-              } else if (ele === "email") {
-                this.setState({ email_counter: this.state.email_counter + 1 });
-              } else if (ele === "password") {
-                this.setState({ password_counter: this.state.password_counter + 1 });
+        if (this.props.signupErrors[0]) {
+          debugger
+          if (Array.isArray(this.props.signupErrors[0])) {
+            debugger
+            this.props.signupErrors[0].forEach((ele) => {
+              if (ele === 'gender') {
+                $(`div.signup-${ele}-selector`).addClass("signup-form-blur");
+              } else if (ele == 'emailExist') {
+                this.setState({ existing_email: 'signup-email-exist-error-msg'})
+              } else {
+                if (ele === "fname") {
+                  this.setState({ fname_counter: this.state.fname_counter + 1 });
+                } else if (ele === "lname") {
+                  this.setState({ lname_counter: this.state.lname_counter + 1 });
+                } else if (ele === "email") {
+                  this.setState({ email_counter: this.state.email_counter + 1 });
+                } else if (ele === "password") {
+                  this.setState({ password_counter: this.state.password_counter + 1 });
+                }
+                $(`input.signup-${ele}`).addClass("signup-form-blur");
+                $(`div.signup-${ele}-icon`).removeClass("hidden");
               }
-              $(`input.signup-${ele}`).addClass("signup-form-blur");
-              $(`div.signup-${ele}-icon`).removeClass("hidden");
-            }
-          });
-          this.error_rendered = true;
+            });
+            this.error_rendered = true
+          }
         }
       }
     }
@@ -187,12 +192,15 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if(this.state.email === this.state.re_email) {
+            this.error_rendered = false;
             this.props.signup(this.state);
         }
     }
 
     render() {
-        this.handleErrors();
+        if (this.error_rendered === false) {
+          this.handleErrors();
+        }
 
         const years = ['Year']
         for(let i = 2020; i >= 1905; i--) {
