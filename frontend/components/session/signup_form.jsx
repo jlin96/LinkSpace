@@ -107,6 +107,9 @@ class SignupForm extends React.Component {
                   birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
                 });
             }
+          if (field === 'first_name' || field === 'last_name') {
+            this.setState({ [field]: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1) })
+          }
             if(field === 'gender') {
                $(`div.signup-gender-selector`).removeClass("signup-form-blur");
             }
