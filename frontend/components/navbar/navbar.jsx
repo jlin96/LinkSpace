@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faHome, faTv, faStore, faUsers, faSortDown, faBell} from "@fortawesome/free-solid-svg-icons";
 import { faFlag} from '@fortawesome/free-regular-svg-icons';
 import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
+import { Link } from 'react-router-dom'
 
 class NavBar extends React.Component {
     constructor(props){
         super(props);
-      this.state = { currentHover: "", shown: false, showDropDown: false, glasses_icon: "nav-search-bar-glasses"};
+      this.state = { currentHover: "", shown: false, showDropDown: false, glasses_icon: "nav-search-bar-glasses", endTime: 0};
         this.handleClick = this.handleClick.bind(this);
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -39,7 +40,7 @@ class NavBar extends React.Component {
     }
 
     handleMouseEnter(e) {
-        let iconLists = ["home", "pages", "watch", "marketplace", "groups", "create", "messanger", "notifications", "account"];
+        let iconLists = ["home", "pages", "watch", "marketplace", "groups", "create", "messenger", "notifications", "account"];
         let currentIcon = ''
         iconLists.forEach( icon => {
             if (e.target.classList.value.includes(icon)) {
@@ -50,15 +51,16 @@ class NavBar extends React.Component {
         setTimeout(
           function () {
             let cTime = Date.now();
-            if (cTime - beforeTime >= 500) {
-               this.setState({ currentHover: currentIcon, shown: true });
+            if (cTime - this.state.endTime < 500) {
+            } else if (cTime - beforeTime >= 500) {
+              this.setState({ currentHover: currentIcon, shown: true });
             } 
           }.bind(this), 500);
     }
 
 
     handleMouseLeave (e) {
-        this.setState({shown: false})
+        this.setState({shown: false, endTime: Date.now()})
     }
 
     iconMessage() {
@@ -86,7 +88,7 @@ class NavBar extends React.Component {
            return (
              <div className="icon-messages icon-messages-create">{this.state.currentHover}</div>
            );
-       } else if (this.state.shown === true && this.state.currentHover === 'Messanger') {
+       } else if (this.state.shown === true && this.state.currentHover === 'Messenger') {
            return (
              <div className="icon-messages icon-messages-messanger">{this.state.currentHover}</div>
            );
@@ -103,13 +105,20 @@ class NavBar extends React.Component {
     }
 
     dropdownMenu () {
-      this.setState({showDropDown: true});
+      if (this.state.showDropDown) {
+        this.setState({ showDropDown: false });
+      } else {
+        this.setState({ showDropDown: true });
+      }
     }
 
     createDropdownMenu() {
       if(this.state.showDropDown) {
         const { logout } = this.props;
-        return <AccountDropdown className={this.state.dropdown} currentUser={this.props.users[this.props.currentUser]} logout={logout}/>;
+        return <AccountDropdown 
+          className={this.state.dropdown} 
+          currentUser={this.props.users[this.props.currentUser]} 
+          logout={logout}/>;
       }
     }
 
@@ -121,14 +130,15 @@ class NavBar extends React.Component {
       this.setState({ glasses_icon: 'nav-search-bar-glasses' })
     }
 
-    addHiddenToDropdown() {
+    addHiddenToDropdown(e) {
+      debugger
       this.setState({ showDropDown: false })
     }
 
     render() {
         return (
           <header className="newsfeed-nav-bar">
-            <img src={window.main_logo} className="newsfeed-nav-logo" />
+            <Link to="/"><img src={window.main_logo} className="newsfeed-nav-logo"/></Link>
             <div className="newsfeed-nav-search-bar-wrapper" onClick={this.addHiddenToGlasses} onBlur={this.removeHiddenGlasses}>
               <input
                 type="text"
@@ -205,13 +215,14 @@ class NavBar extends React.Component {
             <div className="newsfeed-nav-user-nav">
               <div className="user-nav-components">
 
-                <div className="user-profile-headshot">
-                  <img className="newsfeed-headshot"src={window.headshot} />
-                  <div className="newsfeed-name">
-                    {this.props.users[this.props.currentUser].first_name}
-                    {/* Jes */}
+                <Link to={`/users/${this.props.currentUser}`}>
+                  <div className="user-profile-headshot">
+                    <img className="newsfeed-headshot"src={window.headshot} />
+                    <div className="newsfeed-name">
+                      {this.props.users[this.props.currentUser].first_name}
+                    </div>
                   </div>
-                </div>
+                </Link>
 
                 <button
                   type="submit"
@@ -223,7 +234,7 @@ class NavBar extends React.Component {
                 </button>
                 <button
                   type="submit"
-                  className="user-components user-components-left-spacing messanger"
+                  className="user-components user-components-left-spacing messenger"
                   onMouseEnter={this.handleMouseEnter}
                   onMouseLeave={this.handleMouseLeave}
                 >
@@ -247,7 +258,7 @@ class NavBar extends React.Component {
                 </button>
                 <button
                   type="submit"
-                  className="user-components user-components-left-spacing account user-component-account"
+                  className="user-components user-components-left-spacing account"
                   onMouseEnter={this.handleMouseEnter}
                   onMouseLeave={this.handleMouseLeave}
                   onClick={this.dropdownMenu}
@@ -257,8 +268,8 @@ class NavBar extends React.Component {
                     icon={faSortDown}
                     className="user-component-icon icon-arrow-down"
                   />
-                  {this.createDropdownMenu()}
                 </button>
+                {this.createDropdownMenu()}
               </div>
             </div>
             {this.iconMessage()}

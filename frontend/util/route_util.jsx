@@ -6,18 +6,20 @@ const mapStateToProps = (state) => ({
   loggedIn: Boolean(state.session.currentUserId),
 });
 
-const Auth = ({ loggedIn, path, component: Component }) => (
+const Auth = ({ loggedIn, exact, path, component: Component }) => (
   <Route
     path={path}
+    exact={exact}
     render={(props) =>
       loggedIn ? <Redirect to="/" /> : <Component {...props} />
     }
   />
 );
 
-const Protected = ({ loggedIn, path, component: Component }) => (
+const Protected = ({ loggedIn, exact, path, component: Component }) => (
   <Route
     path={path}
+    exact={exact}
     render={(props) =>
       loggedIn ? <Component {...props} /> : <Redirect to="/signup" />
     }

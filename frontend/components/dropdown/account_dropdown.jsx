@@ -32,11 +32,16 @@ class AccountDropdown extends React.Component {
             logout: 'dropdown-logout'
         }
         this.logoutUser = this.logoutUser.bind(this);
-
+        this.addHiddenToDropdown = this.addHiddenToDropdown.bind(this);
     }
 
     logoutUser () {
         this.props.logout();
+    }
+
+    addHiddenToDropdown(e) {
+        debugger
+        this.setState({ table_top: 'dropdown-menu-shadow-top hidden' })
     }
 
     render() {
@@ -44,7 +49,7 @@ class AccountDropdown extends React.Component {
         const full_name = first_name + ' ' + last_name;
         return (
             <>
-                <div className={this.state.table_top}>
+                <div className={this.state.table_top} onBlur={this.addHiddenToDropdown}>
                     <div className={this.state.table}>
 
                         <div className={this.state.dropdown_user_outer_wrapper}>

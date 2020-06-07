@@ -3,12 +3,9 @@ import { logout } from '../../actions/session_actions';
 import Newsfeed from "./newsfeed";
 
 const mapStateToProps = state => ({
-    currentUser: state.session.currentUserId,
-    users: state.entities.users
 })
 
 const mapDispatchToProps = dispatch => ({
-    logout: () => dispatch(logout())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Newsfeed);
