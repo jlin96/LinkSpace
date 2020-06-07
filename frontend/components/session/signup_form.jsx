@@ -44,12 +44,9 @@ class SignupForm extends React.Component {
     }
 
     handleErrors() {
-      debugger
       if(this.error_rendered === false) {
         if (this.props.signupErrors[0]) {
-          debugger
           if (Array.isArray(this.props.signupErrors[0])) {
-            debugger
             this.props.signupErrors[0].forEach((ele) => {
               if (ele === 'gender') {
                 $(`div.signup-${ele}-selector`).addClass("signup-form-blur");
