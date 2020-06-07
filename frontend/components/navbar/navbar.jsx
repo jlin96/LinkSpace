@@ -263,6 +263,7 @@ class NavBar extends React.Component {
                   onMouseLeave={this.handleMouseLeave}
                   onClick={this.dropdownMenu}
                   onBlur={this.addHiddenToDropdown}
+                  tabIndex="1"
                 >
                   <FontAwesomeIcon
                     icon={faSortDown}
