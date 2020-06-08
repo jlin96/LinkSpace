@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamation, faCommentAlt, faCog, faSignOutAlt, faQuestionCircle} from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 class AccountDropdown extends React.Component {
     constructor(props) {
         super(props);
@@ -32,19 +33,10 @@ class AccountDropdown extends React.Component {
             logout: 'dropdown-logout'
         }
         this.logoutUser = this.logoutUser.bind(this);
-        this.addHiddenToDropdown = this.addHiddenToDropdown.bind(this);
-        this.dropdownRef = React.createRef();
     }
 
     logoutUser () {
         this.props.logout();
-    }
-
-    addHiddenToDropdown(dropdownRef) {
-        return e => {
-            debugger
-            this.setState({ table_top: 'dropdown-menu-shadow-top hidden' })
-        }
     }
 
     render() {
@@ -52,25 +44,31 @@ class AccountDropdown extends React.Component {
         const full_name = first_name + ' ' + last_name;
         return (
             <>
-                <div className={this.state.table_top} onBlur={this.addHiddenToDropdown(this.dropdownRef)} ref={this.dropdownRef} tabIndex="1">
+                <div 
+                    className={this.state.table_top} 
+                    tabIndex="1"
+                >
+
                     <div className={this.state.table}>
 
-                        <div className={this.state.dropdown_user_outer_wrapper}>
-                            <div className={this.state.dropdown_inner_wrapper}>
-                                <div className={this.state.dropdown_components}>
-                                    <img className={this.state.user_profile_picture} src={window.headshot} />
-                                    <div className={this.state.user_name_wrapper}>
-                                        <span className={this.state.user}>
-                                            {full_name}
-                                        </span>
-                                        <span className={this.state.see_profile}>
-                                            See your profile
-                                        </span>
+                        <Link to ={`users/${this.props.currentUser.id}`}>
+                            <div className={this.state.dropdown_user_outer_wrapper}>
+                                <div className={this.state.dropdown_inner_wrapper}>
+                                    <div className={this.state.dropdown_components}>
+                                        <img className={this.state.user_profile_picture} src={window.headshot} />
+                                        <div className={this.state.user_name_wrapper}>
+                                            <span className={this.state.user}>
+                                                {full_name}
+                                            </span>
+                                            <span className={this.state.see_profile}>
+                                                See your profile
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
+                        </Link>
+                        
                         <div className={this.state.divider}></div>
                         
                         <div className={this.state.dropdown_outer_wrapper}>

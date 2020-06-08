@@ -55,9 +55,9 @@ const Splash = () => {
             <div className="splash-main-right">
               <label className="signup-header">Sign Up</label>
               <label className="signup-header-2">It’s quick and easy.</label>
-              <div>
+              {/* <div> */}
                 <SigninFormContainer />
-              </div>
+              {/* </div> */}
               <p className="splash-create-page">
                 <a href="" className="create-page-hyperlink">
                   Create a Page

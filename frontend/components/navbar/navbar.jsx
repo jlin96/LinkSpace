@@ -1,7 +1,6 @@
 import React from 'react';
-import AccountDropdown from '../dropdown/account_dropdown';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faHome, faTv, faStore, faUsers, faSortDown, faBell} from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faHome, faTv, faStore, faUsers, faSortDown, faBell, faExclamation, faCommentAlt, faCog, faSignOutAlt, faQuestionCircle} from "@fortawesome/free-solid-svg-icons";
 import { faFlag} from '@fortawesome/free-regular-svg-icons';
 import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 import { Link } from 'react-router-dom'
@@ -9,7 +8,38 @@ import { Link } from 'react-router-dom'
 class NavBar extends React.Component {
     constructor(props){
         super(props);
-      this.state = { currentHover: "", shown: false, showDropDown: false, glasses_icon: "nav-search-bar-glasses", endTime: 0};
+      this.state = { 
+        currentHover: "", 
+        shown: false, 
+        showDropDown: false, 
+        glasses_icon: "nav-search-bar-glasses", 
+        endTime: 0,
+        table_top: 'dropdown-menu-shadow-top hidden',
+        table: 'dropdown-menu',
+        dropdown_outer_wrapper: 'dropdown-components-outer-wrapper',
+        dropdown_inner_wrapper: 'dropdown-components-inner-wrapper',
+        dropdown_user_outer_wrapper: 'dropdown-components-outer-wrapper dropdown-components-user-outer-wrapper',
+        dropdown_components: 'dropdown-components',
+        user_profile_picture: 'dropdown-user-profile-picture',
+        user_name_wrapper: 'dropdown-user-name-wrapper',
+        user: 'dropdown-user-name',
+        see_profile: 'dropdown-see-profile',
+        divider: 'dropdown-divider',
+        dropdown_icon_container: 'dropdown_icon_container',
+        feedback_wrapper: 'dropdown-feedback-wrapper',
+        feedback: 'dropdown-feedback',
+        improve_facebook: 'dropdown-improve-facebook',
+        icon_comment_alt: 'dropdown-icon-comment-alt',
+        icon_exclamation: 'dropdown-icon-exclamation',
+        icon_cog: 'dropdown-icon-cog',
+        icon_circle: 'dropdown-icon-circle',
+        icon_signout: 'dropdown-icon-signout',
+        icon_question_circle: 'dropdown-icon-question-circle',
+        last_single_row: 'dropdown-last-single-row',
+        single_row_font: 'dropdown-single-row-font',
+        greater_than: 'dropdown-greater-than',
+        logout: 'dropdown-logout'
+      };
         this.handleClick = this.handleClick.bind(this);
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -106,20 +136,134 @@ class NavBar extends React.Component {
 
     dropdownMenu () {
       if (this.state.showDropDown) {
-        this.setState({ showDropDown: false });
+        this.setState({ showDropDown: false, table_top: 'dropdown-menu-shadow-top hidden' });
       } else {
-        this.setState({ showDropDown: true });
+        this.setState({ showDropDown: true, table_top: 'dropdown-menu-shadow-top' });
       }
     }
 
     createDropdownMenu() {
-      if(this.state.showDropDown) {
-        const { logout } = this.props;
-        return <AccountDropdown 
-          className={this.state.dropdown} 
-          currentUser={this.props.users[this.props.currentUser]} 
-          logout={logout}/>;
-      }
+      const full_name = this.props.users[this.props.currentUser].first_name + ' ' + this.props.users[this.props.currentUser].last_name;
+      return ( 
+        <div
+          className={this.state.table_top}
+          tabIndex="1"
+        >
+
+          <div className={this.state.table}>
+
+            <Link to={`users/${this.props.currentUser}`}>
+              <div className={this.state.dropdown_user_outer_wrapper}>
+                <div className={this.state.dropdown_inner_wrapper}>
+                  <div className={this.state.dropdown_components}>
+                    <img className={this.state.user_profile_picture} src={window.headshot} />
+                    <div className={this.state.user_name_wrapper}>
+                      <span className={this.state.user}>
+                        {full_name}
+                      </span>
+                      <span className={this.state.see_profile}>
+                        See your profile
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            <div className={this.state.divider}></div>
+
+            <div className={this.state.dropdown_outer_wrapper}>
+              <div className={this.state.dropdown_inner_wrapper}>
+                <div className={this.state.dropdown_components}>
+                  <div className={this.state.dropdown_icon_container}>
+                    <FontAwesomeIcon className={this.state.icon_comment_alt} icon={faCommentAlt} />
+                    <FontAwesomeIcon className={this.state.icon_exclamation} icon={faExclamation} />
+                  </div>
+                  <div className={this.state.feedback_wrapper}>
+                    <span className={this.state.feedback}>
+                      Give Feedback
+                    </span>
+                    <span className={this.state.improve_facebook}>
+                      Help us improve the new Facebook.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={this.state.divider}></div>
+
+            <div className={this.state.dropdown_outer_wrapper}>
+              <div className={this.state.dropdown_inner_wrapper}>
+                <div className={this.state.dropdown_components}>
+                  <div className={this.state.dropdown_icon_container}>
+                    <FontAwesomeIcon className={this.state.icon_cog} icon={faCog} />
+                  </div>
+                  <div className={this.state.last_single_row}>
+                    <span className={this.state.single_row_font} >
+                      Settings & Privacy
+                    </span>
+                    <span className={this.state.greater_than}>
+                      >
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={this.state.dropdown_outer_wrapper}>
+              <div className={this.state.dropdown_inner_wrapper}>
+                <div className={this.state.dropdown_components}>
+                  <div className={this.state.dropdown_icon_container}>
+                    <FontAwesomeIcon className={this.state.icon_question_circle} icon={faQuestionCircle} />
+                  </div>
+                  <div className={this.state.last_single_row}>
+                    <span className={this.state.single_row_font} >
+                      Help & Support
+                    </span>
+                    <span className={this.state.greater_than}>
+                      >
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={this.state.dropdown_outer_wrapper}>
+              <div className={this.state.dropdown_inner_wrapper}>
+                <div className={this.state.dropdown_components}>
+                  <div className={this.state.dropdown_icon_container}>
+                    <FontAwesomeIcon className={this.state.icon_question_circle} icon={faQuestionCircle} />
+                  </div>
+                  <div className={this.state.last_single_row}>
+                    <span className={this.state.single_row_font} >
+                      Dark Mode
+                    </span>
+                    <label className="switch">
+                      <input type="checkbox" />
+                      <span className="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={this.state.dropdown_outer_wrapper} onClick={this.props.logout}>
+              <div className={this.state.dropdown_inner_wrapper}>
+                <div className={this.state.dropdown_components}>
+                  <div className={this.state.dropdown_icon_container}>
+                    <FontAwesomeIcon className={this.state.icon_signout} icon={faSignOutAlt} />
+                  </div>
+                  <span className={this.state.logout} >
+                    Logout
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )
     }
 
     addHiddenToGlasses() {
@@ -131,8 +275,11 @@ class NavBar extends React.Component {
     }
 
     addHiddenToDropdown(e) {
-      debugger
-      this.setState({ showDropDown: false })
+      // debugger
+      const actualClick = e.relatedTarget
+      if (actualClick !== e.target && !e.target.contains(e.relatedTarget)) {
+        this.setState({ table_top: 'dropdown-menu-shadow-top hidden' })
+      }
     }
 
     render() {
@@ -261,16 +408,16 @@ class NavBar extends React.Component {
                   className="user-components user-components-left-spacing account"
                   onMouseEnter={this.handleMouseEnter}
                   onMouseLeave={this.handleMouseLeave}
+                  tabIndex="1"
                   onClick={this.dropdownMenu}
                   onBlur={this.addHiddenToDropdown}
-                  tabIndex="1"
                 >
                   <FontAwesomeIcon
                     icon={faSortDown}
                     className="user-component-icon icon-arrow-down"
                   />
+                  {this.createDropdownMenu()}
                 </button>
-                {this.createDropdownMenu()}
               </div>
             </div>
             {this.iconMessage()}

@@ -20,7 +20,10 @@ class SignupForm extends React.Component {
             email_counter: 0,
             password_counter: 0,
             reemail_counter: 0,
-          existing_email: 'signup-email-exist-error-msg hidden'}
+            existing_email: 'signup-email-exist-error-msg hidden',
+            password_error_wrapper: 'signup-password-error-wrapper hidden',
+            password_error: 'signup-password-error hidden'  
+          }
         this.signUpPasswordError = this.signUpPasswordError.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
@@ -29,16 +32,25 @@ class SignupForm extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.isValidEmail = this.isValidEmail.bind(this);
         this.error_rendered = false;
+        // this.demoLogin = this.demoLogin.bind(this);
+        this.outputResponse = this.outputResponse.bind(this);
+        this.password_error_checked = false;
+    }
 
+    componentDidUpdate (){
+      if (this.password_error_checked === false) {
+        this.signUpPasswordError();
+      }
     }
 
     signUpPasswordError() {
       if (this.props.signupErrors[0]) {
-        if (this.props.signupErrors[0].includes('passwordLess') === true) {
-          return this.props.signupErrors[0].includes('passwordLess') ? 
-            <div className="signup-password-error">
-              Your password must be at least 6 characters long. Please try another.
-            </div> : <div></div>;
+        if (this.props.signupErrors[0].includes('passwordLess')) { 
+          this.password_error_checked = true;
+          this.setState({ password_error_wrapper: 'signup-password-error-wrapper', password_error: 'signup-password-error'})
+        } else {
+          this.password_error_checked = true;
+          this.setState({ password_error_wrapper: 'signup-password-error-wrapper hidden', password_error: 'signup-password-error hidden' })
         }
       }
     }
@@ -190,8 +202,27 @@ class SignupForm extends React.Component {
         e.preventDefault();
         if(this.state.email === this.state.re_email) {
             this.error_rendered = false;
+            this.password_error_checked = false;
             this.props.signup(this.state);
         }
+    }
+
+    // demoLogin(e) {
+    //   e.preventDefault();
+    //   return e => {
+    //     // debugger
+    //     this.setState({ email: 'jesselin@gmail.com', password: 'password' });
+    //     this.props.login(this.state);
+    //   }
+    // }
+
+    outputResponse(e) {
+      e.preventDefault();
+      // debugger
+      if(e.target.classList.value.includes('demobutton')) {
+        // this.setState({ email: 'jesselin@gmail.com', password: 'password' });
+        this.props.login({ email: 'jesselin@gmail.com', password: 'password' });
+      }
     }
 
     render() {
@@ -225,199 +256,212 @@ class SignupForm extends React.Component {
 
         return (
           <>
-            <div className="signup-password-error-wrapper">
-              {this.signUpPasswordError()}
+            <div>
+              <div className={this.state.password_error_wrapper}>
+                <div className={this.state.password_error}>
+                  Your password must be at least 6 characters long. Please try another.
+                </div>
+              </div>
+              <form className="splash-signup-form" onClick={this.outputResponse} onSubmit={this.handleSubmit}>
+                <div className="signup-row-one">
+                  <input
+                    className="signup-fname"
+                    type="text"
+                    placeholder="First name"
+                    onFocus={this.handleFocus}
+                    onBlur={this.handleBlur}
+                    onClick={this.handleClick("fname_counter")}
+                    onChange={this.handleChange("first_name")}
+                  />
+                  <div className="signup-fname-icon hidden">
+                    <FontAwesomeIcon
+                      className="icon"
+                      icon={faExclamationCircle}
+                    />
+                  </div>
+                  <div className="signup-fname-error-msg hidden">
+                    <span className="signup-fname-error-msg-text">
+                      What's your name?
+                    </span>
+                    <div className="signup-fname-error-triangle"></div>
+                  </div>
+                  <input
+                    className="signup-lname"
+                    type="text"
+                    placeholder="Last name"
+                    onFocus={this.handleFocus}
+                    onBlur={this.handleBlur}
+                    onChange={this.handleChange("last_name")}
+                  />
+                  <div className="signup-lname-icon hidden">
+                    <FontAwesomeIcon
+                      className="icon"
+                      icon={faExclamationCircle}
+                    />
+                  </div>
+                </div>
+
+                <div className="signup-email-wrapper">
+                  <input
+                    className="signup-email"
+                    type="text"
+                    placeholder="Mobile number or email"
+                    onFocus={this.handleFocus}
+                    onBlur={this.handleBlur}
+                    onClick={this.handleClick("email_counter")}
+                    onChange={this.handleChange("email")}
+                  />
+                  <div className="signup-email-icon hidden">
+                    <FontAwesomeIcon
+                      className="icon"
+                      icon={faExclamationCircle}
+                    />
+                  </div>
+                  <div className="signup-email-error-msg hidden">
+                    <span className="signup-email-error-msg-text">
+                      You'll use this when you log in and if you ever need to
+                      reset your password.
+                    </span>
+                    <div className="signup-email-error-triangle"></div>
+                  </div>
+                  <div className={this.state.existing_email}>
+                    <span className="signup-email-error-msg-text">
+                      The email you've entered already exist, please enter another email.
+                    </span>
+                    <div className="signup-email-error-triangle"></div>
+                  </div>
+                </div>
+
+                {this.isValidEmail()}
+                <div className="signup-password-wrapper">
+                  <input
+                    className="signup-password"
+                    type="password"
+                    placeholder="New password"
+                    onFocus={this.handleFocus}
+                    onBlur={this.handleBlur}
+                    onClick={this.handleClick("password_counter")}
+                    onChange={this.handleChange("password")}
+                  />
+                  <div className="signup-password-icon hidden">
+                    <FontAwesomeIcon
+                      className="icon"
+                      icon={faExclamationCircle}
+                    />
+                  </div>
+                  <div className="signup-password-error-msg hidden">
+                    <span className="signup-password-error-msg-text">
+                      Enter a combination of at least six numbers, letters and
+                      punctuations(like ! and &).
+                    </span>
+                    <div className="signup-password-error-triangle"></div>
+                  </div>
+                </div>
+
+                <div className="signup-birthday-wrapper">
+                  <span className="signup-birthday-text">Birthday</span>
+
+                  <div className="signup-birthday-selector">
+                    <select
+                      name={this.state.month}
+                      className="signup-month"
+                      onChange={this.handleChange("month")}
+                      defaultValue={"6"}
+                    >
+                      {birthdayMonths}
+                    </select>
+
+                    <select
+                      name={this.state.day}
+                      className="signup-day"
+                      onChange={this.handleChange("day")}
+                      defaultValue={"3"}
+                    >
+                      {birthdayDays}
+                    </select>
+
+                    <select
+                      name={this.state.day}
+                      className="signup-year"
+                      onChange={this.handleChange("year")}
+                      defaultValue={"1995"}
+                    >
+                      {birthdayYears}
+                    </select>
+                    <FontAwesomeIcon
+                      icon={faQuestionCircle}
+                      className="birthday-question-icon"
+                    />
+                  </div>
+                </div>
+
+                <div className="signup-gender-wrapper">
+                  <span className="signup-gender-text">Gender</span>
+
+                  <div className="signup-gender-selector">
+                    <input
+                      type="radio"
+                      name={this.state.gender}
+                      value="F"
+                      className="gender-input"
+                      onChange={this.handleChange("gender")}
+                    />
+                    <label className="gender-input-text">Female</label>
+                    <input
+                      type="radio"
+                      name={this.state.gender}
+                      value="M"
+                      className="gender-input"
+                      onChange={this.handleChange("gender")}
+                    />
+                    <label className="gender-input-text">Male</label>
+                    <input
+                      type="radio"
+                      name={this.state.gender}
+                      value="C"
+                      className="gender-input"
+                      onChange={this.handleChange("gender")}
+                    />
+                    <label className="gender-input-text">Custom</label>
+                  </div>
+                </div>
+                <div className="signup-terms-wrapper">
+                  <p className="signup-terms">
+                    By clicking Sign Up, you agree to our{" "}
+                    <a href="" className="signup-terms-hyperlink">
+                      Terms
+                    </a>
+                    ,{" "}
+                    <a href="" className="signup-terms-hyperlink">
+                      Data Policy
+                    </a>{" "}
+                    and{" "}
+                    <a href="" className="signup-terms-hyperlink">
+                      Cookies Policy
+                    </a>
+                    . You may receive SMS Notifications from us and can opt out
+                    any time.
+                  </p>
+                </div>
+
+                <div className="signup-buttons">
+                  <div className="signup-button-wrapper">
+                    <input
+                      type="submit"
+                      className="signup-button"
+                      value="Sign Up"
+                    />
+                  </div>
+                  <div className="signup-button-wrapper" tabIndex='1'>
+                    <input
+                      type="submit"
+                      className="signup-button demobutton"
+                      value="Demo"
+                    />
+                  </div>
+                </div>
+              </form>
             </div>
-            <form className="splash-signup-form" onSubmit={this.handleSubmit}>
-              <div className="signup-row-one">
-                <input
-                  className="signup-fname"
-                  type="text"
-                  placeholder="First name"
-                  onFocus={this.handleFocus}
-                  onBlur={this.handleBlur}
-                  onClick={this.handleClick("fname_counter")}
-                  onChange={this.handleChange("first_name")}
-                />
-                <div className="signup-fname-icon hidden">
-                  <FontAwesomeIcon
-                    className="icon"
-                    icon={faExclamationCircle}
-                  />
-                </div>
-                <div className="signup-fname-error-msg hidden">
-                  <span className="signup-fname-error-msg-text">
-                    What's your name?
-                  </span>
-                  <div className="signup-fname-error-triangle"></div>
-                </div>
-                <input
-                  className="signup-lname"
-                  type="text"
-                  placeholder="Last name"
-                  onFocus={this.handleFocus}
-                  onBlur={this.handleBlur}
-                  onChange={this.handleChange("last_name")}
-                />
-                <div className="signup-lname-icon hidden">
-                  <FontAwesomeIcon
-                    className="icon"
-                    icon={faExclamationCircle}
-                  />
-                </div>
-              </div>
-
-              <div className="signup-email-wrapper">
-                <input
-                  className="signup-email"
-                  type="text"
-                  placeholder="Mobile number or email"
-                  onFocus={this.handleFocus}
-                  onBlur={this.handleBlur}
-                  onClick={this.handleClick("email_counter")}
-                  onChange={this.handleChange("email")}
-                />
-                <div className="signup-email-icon hidden">
-                  <FontAwesomeIcon
-                    className="icon"
-                    icon={faExclamationCircle}
-                  />
-                </div>
-                <div className="signup-email-error-msg hidden">
-                  <span className="signup-email-error-msg-text">
-                    You'll use this when you log in and if you ever need to
-                    reset your password.
-                  </span>
-                  <div className="signup-email-error-triangle"></div>
-                </div>
-                <div className={this.state.existing_email}>
-                  <span className="signup-email-error-msg-text">
-                    The email you've entered already exist, please enter another email.
-                  </span>
-                  <div className="signup-email-error-triangle"></div>
-                </div>
-              </div>
-
-              {this.isValidEmail()}
-              <div className="signup-password-wrapper">
-                <input
-                  className="signup-password"
-                  type="password"
-                  placeholder="New password"
-                  onFocus={this.handleFocus}
-                  onBlur={this.handleBlur}
-                  onClick={this.handleClick("password_counter")}
-                  onChange={this.handleChange("password")}
-                />
-                <div className="signup-password-icon hidden">
-                  <FontAwesomeIcon
-                    className="icon"
-                    icon={faExclamationCircle}
-                  />
-                </div>
-                <div className="signup-password-error-msg hidden">
-                  <span className="signup-password-error-msg-text">
-                    Enter a combination of at least six numbers, letters and
-                    punctuations(like ! and &).
-                  </span>
-                  <div className="signup-password-error-triangle"></div>
-                </div>
-              </div>
-
-              <div className="signup-birthday-wrapper">
-                <span className="signup-birthday-text">Birthday</span>
-
-                <div className="signup-birthday-selector">
-                  <select
-                    name={this.state.month}
-                    className="signup-month"
-                    onChange={this.handleChange("month")}
-                    defaultValue={"6"}
-                  >
-                    {birthdayMonths}
-                  </select>
-
-                  <select
-                    name={this.state.day}
-                    className="signup-day"
-                    onChange={this.handleChange("day")}
-                    defaultValue={"3"}
-                  >
-                    {birthdayDays}
-                  </select>
-
-                  <select
-                    name={this.state.day}
-                    className="signup-year"
-                    onChange={this.handleChange("year")}
-                    defaultValue={"1995"}
-                  >
-                    {birthdayYears}
-                  </select>
-                  <FontAwesomeIcon
-                    icon={faQuestionCircle}
-                    className="birthday-question-icon"
-                  />
-                </div>
-              </div>
-
-              <div className="signup-gender-wrapper">
-                <span className="signup-gender-text">Gender</span>
-
-                <div className="signup-gender-selector">
-                  <input
-                    type="radio"
-                    name={this.state.gender}
-                    value="F"
-                    className="gender-input"
-                    onChange={this.handleChange("gender")}
-                  />
-                  <label className="gender-input-text">Female</label>
-                  <input
-                    type="radio"
-                    name={this.state.gender}
-                    value="M"
-                    className="gender-input"
-                    onChange={this.handleChange("gender")}
-                  />
-                  <label className="gender-input-text">Male</label>
-                  <input
-                    type="radio"
-                    name={this.state.gender}
-                    value="C"
-                    className="gender-input"
-                    onChange={this.handleChange("gender")}
-                  />
-                  <label className="gender-input-text">Custom</label>
-                </div>
-              </div>
-              <div className="signup-terms-wrapper">
-                <p className="signup-terms">
-                  By clicking Sign Up, you agree to our{" "}
-                  <a href="" className="signup-terms-hyperlink">
-                    Terms
-                  </a>
-                  ,{" "}
-                  <a href="" className="signup-terms-hyperlink">
-                    Data Policy
-                  </a>{" "}
-                  and{" "}
-                  <a href="" className="signup-terms-hyperlink">
-                    Cookies Policy
-                  </a>
-                  . You may receive SMS Notifications from us and can opt out
-                  any time.
-                </p>
-              </div>
-
-              <div className="signup-button-wrapper">
-                <input
-                  type="submit"
-                  className="signup-button"
-                  value="Sign Up"
-                />
-              </div>
-            </form>
           </>
         );
     }

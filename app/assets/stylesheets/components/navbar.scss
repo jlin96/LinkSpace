@@ -8,6 +8,7 @@
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid rgb(221, 223, 226);
     position: relative;
+    z-index: 1;
 
     .newsfeed-nav-logo {
         height: 40px;
@@ -179,7 +180,6 @@
 
                 .dropdown-menu {
                     background-color: rgb(255, 255, 255);
-                    z-index: 2;
                     box-shadow:
                         0 2.3px 1.9px rgba(0, 0, 0, 0.013),
                         0 5.4px 4.3px rgba(0, 0, 0, 0.014),
