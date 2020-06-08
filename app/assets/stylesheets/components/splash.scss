@@ -540,7 +540,8 @@
                             flex-direction: row;
 
                             .gender-input {
-                                margin: 3px 3px 0px 5px
+                                margin: 3px 3px 0px 5px;
+                                color: rgb(20, 121, 251);
                             }
 
                             .gender-input-text {
@@ -601,6 +602,10 @@
                                 font-size: 19px;
                                 color: #FFFFFF;
                                 font-weight: 600;
+                            }
+
+                            .demobutton {
+                                cursor: pointer;
                             }
                         }
                     }

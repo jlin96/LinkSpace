@@ -32,7 +32,6 @@ class SignupForm extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.isValidEmail = this.isValidEmail.bind(this);
         this.error_rendered = false;
-        // this.demoLogin = this.demoLogin.bind(this);
         this.outputResponse = this.outputResponse.bind(this);
         this.password_error_checked = false;
     }
@@ -207,20 +206,9 @@ class SignupForm extends React.Component {
         }
     }
 
-    // demoLogin(e) {
-    //   e.preventDefault();
-    //   return e => {
-    //     // debugger
-    //     this.setState({ email: 'jesselin@gmail.com', password: 'password' });
-    //     this.props.login(this.state);
-    //   }
-    // }
-
     outputResponse(e) {
       e.preventDefault();
-      // debugger
       if(e.target.classList.value.includes('demobutton')) {
-        // this.setState({ email: 'jesselin@gmail.com', password: 'password' });
         this.props.login({ email: 'jesselin@gmail.com', password: 'password' });
       }
     }
@@ -262,7 +250,7 @@ class SignupForm extends React.Component {
                   Your password must be at least 6 characters long. Please try another.
                 </div>
               </div>
-              <form className="splash-signup-form" onClick={this.outputResponse} onSubmit={this.handleSubmit}>
+              <form className="splash-signup-form" onSubmit={this.handleSubmit}>
                 <div className="signup-row-one">
                   <input
                     className="signup-fname"
@@ -452,12 +440,10 @@ class SignupForm extends React.Component {
                       value="Sign Up"
                     />
                   </div>
-                  <div className="signup-button-wrapper" tabIndex='1'>
-                    <input
-                      type="submit"
-                      className="signup-button demobutton"
-                      value="Demo"
-                    />
+                  <div className="signup-button-wrapper" onClick={this.outputResponse} tabIndex='1'>
+                    <div className="signup-button demobutton">
+                      Demo
+                    </div>
                   </div>
                 </div>
               </form>
