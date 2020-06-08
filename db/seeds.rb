@@ -14,5 +14,5 @@ user1 = User.create!(
     email: "jesselin@gmail.com", 
     password: "password", 
     gender: "M", 
-    birthday: "1999-1-1")
+    birthday: "1999-1-1"
 )
