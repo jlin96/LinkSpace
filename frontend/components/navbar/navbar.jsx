@@ -275,7 +275,6 @@ class NavBar extends React.Component {
     }
 
     addHiddenToDropdown(e) {
-      // debugger
       const actualClick = e.relatedTarget
       if (actualClick !== e.target && !e.target.contains(e.relatedTarget)) {
         this.setState({ table_top: 'dropdown-menu-shadow-top hidden' })

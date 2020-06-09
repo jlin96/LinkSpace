@@ -1,3 +1,4 @@
+require 'faker'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -16,3 +17,43 @@ user1 = User.create!(
     gender: "M", 
     birthday: "1999-1-1"
 )
+
+user2 = User.create!(
+    first_name: "Raymond",
+    last_name: "Hua",
+    email: "raymondhua@gmail.com",
+    password: "1234567",
+    gender: "M",
+    birthday: "2000-12-25"
+)
+
+def birthday_generator ()
+    year = rand(1905..2020)
+    month = rand(1..12)
+
+    if [1,3,5,7,8,10,12].include?(month)
+        day = rand(1..31)
+    elsif [4,6,9,11].include?(month)
+        day = rand(1..30)
+    else
+        if year % 4 == 0
+            day = rand(1..29)
+        else
+            day = rand(1..28)
+        end
+    end
+    "#{year}-#{month}-#{day}"
+end
+
+20.times do
+    User.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        email: Faker::Internet.email,
+        password: 'password',
+        gender: Faker::Gender.short_binary_type.upcase,
+        bio: [Faker::Quote.famous_last_words, ''].sample,
+        birthday: birthday_generator()
+    )
+
+end

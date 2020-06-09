@@ -1,11 +1,21 @@
 import React from 'react';
 
-const Newsfeed = () => {
-  return (
+class Newsfeed extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.props.fetchUsers();
+  }
+
+  render () {
+    return (
     <div className="newsfeed">
       <div>hello its newsfeed</div>
     </div>
-  );
+    );
+  }
 };
 
 export default Newsfeed;

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import LoginFormContainer from '../session/login_form_container';
 import SigninFormContainer from '../session/signup_form_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -55,9 +54,7 @@ const Splash = () => {
             <div className="splash-main-right">
               <label className="signup-header">Sign Up</label>
               <label className="signup-header-2">It’s quick and easy.</label>
-              {/* <div> */}
                 <SigninFormContainer />
-              {/* </div> */}
               <p className="splash-create-page">
                 <a href="" className="create-page-hyperlink">
                   Create a Page

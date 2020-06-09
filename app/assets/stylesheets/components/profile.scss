@@ -58,9 +58,132 @@
             width: 56px;
             margin: 0 auto;
         }
-        
+
         .profile-bio-nonexist:hover {
             text-decoration: underline;
+        }
+
+        .profile-actual-edit {
+            font-family: Roboto, Open Sans, Verdana, sans-serif;
+            font-size: 15px;
+            color: #1876F2;
+            text-align: center;
+            cursor: pointer;
+            padding: 3px 0px 12px 0px;
+            font-weight: 500;
+            width: 56px;
+            margin: 0 auto;
+        }
+
+        .profile-actual-edit:hover {
+            text-decoration: underline;
+        }
+        
+        .profile-edit-bio-wrapper {
+            width: 300px;
+            height: 143px;
+            margin: 0 auto;
+            margin-top: 3px;
+
+            .bio-textarea {
+                width: 274px;
+                height: 54px;
+                padding: 8px 12px;
+                background-color: rgb(240, 242, 245);
+                border: 1px solid rgb(206, 208, 212);
+                color: rgb(140, 143, 147);
+                text-align: center;
+                border-radius: 5px;
+                resize: none;
+                font-family: Roboto, Open Sans, Verdana, sans-serif;
+            }
+
+            .bio-textarea:hover {
+                background-color:	#e4e6e9;
+            }
+
+            .bio-textarea-text-color {
+                color: rgb(5, 5, 5);
+            }
+
+            .bio-characters-text-wrapper {
+                display: flex;
+                justify-content: flex-end;
+                margin: 0px 0px 8px;
+
+                .edit-bio-characters-text {
+                font-family: Roboto, Open Sans, Verdana, sans-serif;
+                color: rgb(105, 107, 111);
+                font-size: 13px;
+                }
+            }
+
+            .edit-bio-buttons-wrappers {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin: 4px 0px 0px;
+
+                .edit-bio-icon-wrapper {
+                    .edit-bio-globe-icon {
+                        height: 20px;
+                        width: 20px;
+                        margin-right: 8px;
+                        color: rgb(29, 31, 35)
+                    }
+
+                    .edit-bio-globe-text {
+                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-size: 15px;
+                        color: rgb(59, 59, 59)
+                    }
+                }
+
+                .edit-bio-button-wrapper{
+                    display: flex;
+                    flex-direction: row;
+
+                    .edit-bio-button {
+                        height: 36px;
+                        padding: 0px 12px;
+                        background-color: #E4E6EB;
+                        margin-left: 4px;
+                        border-radius: 5px;
+                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        color: rgb(5, 5, 5);
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+
+                    .edit-bio-save-button-nvalid {
+                        height: 36px;
+                        padding: 0px 12px;
+                        background-color: #E4E6EB;
+                        margin-left: 4px;
+                        border-radius: 5px;
+                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        color: rgb(188, 192, 196);
+                        display: flex;
+                        align-items: center;
+                        cursor: not-allowed;
+                    }
+
+                    .edit-bio-save-button-valid{
+                        height: 36px;
+                        padding: 0px 12px;
+                        background-color: #1877F2;
+                        margin-left: 4px;
+                        border-radius: 5px;
+                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        color: #FFFFFF;
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+                }
+            }
         }
 
         .profile-bio-exist {
@@ -68,6 +191,7 @@
             font-size: 17px;
             color: #65676B;
             text-align: center;
+            margin-top: 4px;
             font-weight: 400;
         }
     }
@@ -158,6 +282,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                cursor: pointer;
 
                 .profile-components-button-icon {
                     font-size: 15px;
@@ -172,22 +297,25 @@
             border-radius: 5px;
             display: flex;
             align-items: center;
+            cursor: pointer;
 
             .profile-edit-profile-text-wrapper{ 
                 display: flex;
                 align-items: center;
-                width: 106px;
+                width: 100px;
                 justify-content: space-between;
                 
                 .profile-edit-profile-text {
                     font-family: Roboto, Open Sans, Verdana, sans-serif;
                     font-size: 16px;
-                    color: #050505
+                    color: #050505;
+                    transform: scale(1.02, 1);
                 }
 
                 .profile-edit-profile-icon {
                     height: 16px;
                     width: 16px;
+                    
                 }
             }
         }
@@ -222,6 +350,21 @@
             font-size: 15px;
             color: rgb(34, 122, 239);
             text-align: center;
+        }
+        .fix-about-text {
+            transform: scale(1.07,1);
+        }
+
+        .fix-friends-text {
+            transform: scale(1.07,1);
+        }
+
+        .fix-photos-text {
+            transform: scale(1.06,1);
+        }
+
+        .fix-archive-text {
+            transform: scale(1.07,1);
         }
     }
 }

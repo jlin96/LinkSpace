@@ -6,6 +6,14 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token, :ensure_bio
 
+    has_many :authored_posts,
+        foreign_key: :author_id,
+        class_name: :Post
+    
+    has_many :received_posts,
+        foreign_key: :receiver_id,
+        class_name: :Post
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         return ['The email you\'ve entered does not match any account.'] unless user
