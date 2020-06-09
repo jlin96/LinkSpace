@@ -45,7 +45,7 @@ def birthday_generator ()
     "#{year}-#{month}-#{day}"
 end
 
-20.times do
+10.times do
     User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -55,5 +55,23 @@ end
         bio: [Faker::Quote.famous_last_words, ''].sample,
         birthday: birthday_generator()
     )
-
 end
+
+post1 = Post.create!(
+    author_id: 1,
+    receiver_id: 1,
+    body: 'hello world'
+)
+post2 = Post.create!(
+    author_id: 1,
+    receiver_id: 1,
+    body: 'post 2'
+)
+
+5.times do 
+  Post.create!(
+    author_id: rand(1..2),
+    receiver_id: rand(1..2),
+    body: Faker::Quote.famous_last_words
+  )
+end 
