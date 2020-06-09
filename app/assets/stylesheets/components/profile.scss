@@ -369,7 +369,23 @@
     }
 }
 
-.profile-body {
+.profile-body-background {
     background-color: rgb(240, 242, 245);
     height: 400px;
+
+    .profile-body-wrapper {
+        display: flex;
+        flex-direction: row;
+        width: 876px;
+        margin: 0 auto;
+
+        .profile-body-intro {
+            margin-top: 16px;
+            width: 360px;
+            margin-right: 16px;
+            height: 500px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+        }
+    }
 }
