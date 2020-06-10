@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH, faEye, faSearch, faPen, faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisH, faEye, faSearch, faPen, faGlobeAmericas, faCaretDown, faUserCheck, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 
 class ProfileHeader extends React.Component {
     constructor(props) {
@@ -18,11 +19,6 @@ class ProfileHeader extends React.Component {
             profile_components_li: 'profile-main-component',
             profile_components_inner: 'profile-main-component-inner',
             timeline_components_text: 'profile-main-component-text',
-            about_components_text: 'profile-main-component-text fix-about-text',
-            friends_components_text: 'profile-main-component-text fix-friends-text',
-            photos_components_text: 'profile-main-component-text fix-photos-text',
-            archive_components_text: 'profile-main-component-text fix-archive-text',
-            more_components_text: 'profile-main-component-text',
             currentSelect: 'timeline',
             bio_class: 'profile-bio-nonexist',
             edit_bio_class: 'profile-edit-bio-wrapper hidden',
@@ -34,7 +30,7 @@ class ProfileHeader extends React.Component {
             user: this.props.user,
         }
         this.swapClick = this.swapClick.bind(this);
-        this.editProfile = this.editProfile.bind(this);
+        this.currentOrFriendEditMessage = this.currentOrFriendEditMessage.bind(this);
         this.add_bio_edit_form = this.add_bio_edit_form.bind(this);
         this.countCharacters = this.countCharacters.bind(this);
         this.cancel_bio_edit = this.cancel_bio_edit.bind(this);
@@ -96,7 +92,6 @@ class ProfileHeader extends React.Component {
     }
 
     cancel_bio_edit(e) {
-        debugger
         if (this.props.user.bio !== '') {
             let oldUser = Object.assign({}, this.state.user);
             oldUser.bio = this.props.user.bio;
@@ -110,7 +105,6 @@ class ProfileHeader extends React.Component {
 
             })
         } else {
-            debugger
             let oldUserEmpty = Object.assign({}, this.props.user);
             oldUserEmpty.bio = '';
             this.setState({
@@ -223,10 +217,18 @@ class ProfileHeader extends React.Component {
                     </div>
                 </>
             )
+        } else if (this.props.user.id !== this.props.currentUser && this.props.user.bio !== ''){ 
+            return (
+                <span className='profile-bio-exist profile-friend-bio-exist'>
+                    {this.props.user.bio}
+                </span>
+            )
         } else {
-            <span className={this.state.user_bio_text}>
-                {this.props.user.bio}
-            </span>
+            return (
+                <span className='profile-header-not-cuser-spacing'>
+
+                </span>
+            )
         }
     }
 
@@ -237,7 +239,7 @@ class ProfileHeader extends React.Component {
                     <button
                         className={this.state.currentSelect === 'archive' ? this.state.profile_components_inner_clicked : this.state.profile_components_inner}
                     >
-                        <span className={this.state.archive_components_text}>
+                        <span className='profile-main-component-text'>
                             Archive
                         </span>
                     </button>
@@ -247,9 +249,9 @@ class ProfileHeader extends React.Component {
             return (
                 <li className={this.state.currentSelect === 'video' ? this.state.profile_components_li_clicked : this.state.profile_components_li} onClick={this.swapClick('video')}>
                     <button
-                        className={this.state.currentSelect === 'archive' ? this.state.profile_components_inner_clicked : this.state.profile_components_inner}
+                        className={this.state.currentSelect === 'video' ? this.state.profile_components_inner_clicked : this.state.profile_components_inner}
                     >
-                        <span className={this.state.archive_components_text}>
+                        <span className='profile-main-component-text'>
                             Video
                         </span>
                     </button>
@@ -258,17 +260,50 @@ class ProfileHeader extends React.Component {
         }
     }
 
-    editProfile() {
+    currentOrFriendEditMessage() {
         if (this.props.user.id === this.props.currentUser) {
             return (
-                <div className='profile-components-edit-profile-wrapper'>
-                    <div className='profile-edit-profile-text-wrapper'>
-                        <FontAwesomeIcon className='profile-edit-profile-icon' icon={faPen} />
-                        <span className='profile-edit-profile-text'>
-                            Edit Profile
-                        </span>
+                <>
+                    <div className='profile-components-edit-profile-wrapper'>
+                        <div className='profile-edit-profile-text-wrapper'>
+                            <FontAwesomeIcon className='profile-edit-profile-icon' icon={faPen} />
+                            <span className='profile-edit-profile-text'>
+                                Edit Profile
+                                        </span>
+                        </div>
                     </div>
-                </div>
+                    <div className='profile-components-button-component'>
+                        <FontAwesomeIcon className='profile-components-button-icon' icon={faEye} />
+                    </div>
+                    <div className='profile-components-button-component'>
+                        <FontAwesomeIcon className='profile-components-button-icon' icon={faSearch} />
+                    </div>
+                    <div className='profile-components-button-component'>
+                        <FontAwesomeIcon className='profile-components-button-icon' icon={faEllipsisH} />
+                    </div>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <div className='profile-components-edit-profile-wrapper'>
+                        <div className='profile-edit-profile-text-wrapper'>
+                            <FontAwesomeIcon className='profile-edit-profile-icon' icon={faFacebookMessenger} />
+                            <span className='profile-edit-profile-text'>
+                                Message
+                            </span>
+                        </div>
+                    </div>
+                    <div className='profile-components-button-component'>
+                        <FontAwesomeIcon className='profile-components-button-icon' icon={faPhone} />
+                    </div>
+                    <div className='profile-components-button-component'>
+                        <FontAwesomeIcon className='profile-components-button-icon' icon={faUserCheck} />
+                    </div>
+                    <div className='profile-components-button-component'>
+                        <FontAwesomeIcon className='profile-components-button-icon' icon={faEllipsisH} />
+                    </div>
+                </>
             )
         }
     }
@@ -282,6 +317,9 @@ class ProfileHeader extends React.Component {
     }
 
     render() {
+        if (this.props.user === undefined) {
+            return null;
+        }
         const { first_name, last_name } = this.props.user;
         const full_name = first_name + ' ' + last_name;
         return (
@@ -310,7 +348,7 @@ class ProfileHeader extends React.Component {
                             <button
                                 className={this.state.currentSelect === 'timeline' ? this.state.profile_components_inner_clicked : this.state.profile_components_inner}
                             >
-                                <span className={this.state.timeline_components_text}>
+                                <span className='profile-main-component-text'>
                                     Timeline
                                 </span>
                             </button>
@@ -319,7 +357,7 @@ class ProfileHeader extends React.Component {
                             <button
                                 className={this.state.currentSelect === 'about' ? this.state.profile_components_inner_clicked : this.state.profile_components_inner}
                             >
-                                <span className={this.state.about_components_text}>
+                                <span className='profile-main-component-text'>
                                     About
                                 </span>
                             </button>
@@ -328,7 +366,7 @@ class ProfileHeader extends React.Component {
                             <button
                                 className={this.state.currentSelect === 'friends' ? this.state.profile_components_inner_clicked : this.state.profile_components_inner}
                             >
-                                <span className={this.state.friends_components_text}>
+                                <span className='profile-main-component-text'>
                                     Friends
                                 </span>
                             </button>
@@ -337,7 +375,7 @@ class ProfileHeader extends React.Component {
                             <button
                                 className={this.state.currentSelect === 'photos' ? this.state.profile_components_inner_clicked : this.state.profile_components_inner}
                             >
-                                <span className={this.state.photos_components_text}>
+                                <span className='profile-main-component-text'>
                                     Photos
                                 </span>
                             </button>
@@ -347,26 +385,18 @@ class ProfileHeader extends React.Component {
                             <button
                                 className={this.state.currentSelect === 'more' ? this.state.profile_components_inner_clicked : this.state.profile_components_inner}
                             >
-                                <span className={this.state.more_components_text}>
+                                
+                                <span className='profile-main-component-text'>
                                     More
                                 </span>
+                                <FontAwesomeIcon className='profile-main-caret-icon'icon={faCaretDown} />
                             </button>
                         </li>
                     </ul>
 
                     <div className='profile-components-right-side'>
                         <div className='profile-components-wrapper'>
-                            {this.editProfile()}
-                            <div className='profile-components-button-component'>
-                                <FontAwesomeIcon className='profile-components-button-icon' icon={faEye} />
-                            </div>
-                            <div className='profile-components-button-component'>
-                                <FontAwesomeIcon className='profile-components-button-icon' icon={faSearch} />
-                            </div>
-                            <div className='profile-components-button-component'>
-                                <FontAwesomeIcon className='profile-components-button-icon' icon={faEllipsisH} />
-                            </div>
-
+                            {this.currentOrFriendEditMessage()}
                         </div>
                     </div>
                 </div>

@@ -1,24 +1,27 @@
 import React from 'react'
 import ProfileHeader from './profile_header'
+import ProfileMain from './profile_main'
 
 class Profile extends React.Component {
     constructor(props) {
         super(props)
     }
 
+    componentDidMount () {
+        this.props.userPost(this.props.match.params.userId);
+        this.props.fetchUsers();
+    }
+
     render() {
+        if (this.props.user === undefined) {
+            return null;
+        }
+        const { user, currentUser, posts, users, updateUser} = this.props
         return (
             <>
-                <ProfileHeader user={this.props.user} currentUser={this.props.currentUser} updateUser={this.props.updateUser} />
+                <ProfileHeader user={user} currentUser={currentUser} updateUser={updateUser} users={users} />
                 <div className='profile-body-background'>
-                    <div className='profile-body-wrapper'>
-                        <div className='profile-body-intro'>
-                            Intro
-                        </div>
-                        <div className='profile-body-post-container'>
-                            
-                        </div>
-                    </div>
+                    <ProfileMain user={user} currentUser={currentUser} posts={posts} users={users}/>
                 </div>
             </>
         )

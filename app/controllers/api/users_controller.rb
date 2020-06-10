@@ -51,6 +51,12 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def posts
+        @user = User.find_by(id: params[:id])
+        @posts = @user.authored_posts + @user.received_posts
+        render :post
+    end
+
     private
 
     def user_params

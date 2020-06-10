@@ -48,3 +48,9 @@ export const deletePost = postId => dispatch => {
         return dispatch(removePost(postId));
     });
 }
+
+export const userPost = userId => dispatch => {
+    return postAPIUtil.userPost(userId).then( posts => {
+        return dispatch(receiveAllPosts(posts));
+    });
+}

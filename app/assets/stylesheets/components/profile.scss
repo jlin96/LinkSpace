@@ -40,7 +40,7 @@
         padding-top: 26px;
 
         .profile-user-full-name {
-            font-family: Roboto, Open Sans, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 32px;
             font-weight: 500;
             color: #050505;
@@ -48,7 +48,7 @@
         }
 
         .profile-bio-nonexist {
-            font-family: Roboto, Open Sans, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 15px;
             color: #1876F2;
             text-align: center;
@@ -64,7 +64,7 @@
         }
 
         .profile-actual-edit {
-            font-family: Roboto, Open Sans, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 15px;
             color: #1876F2;
             text-align: center;
@@ -95,7 +95,7 @@
                 text-align: center;
                 border-radius: 5px;
                 resize: none;
-                font-family: Roboto, Open Sans, Verdana, sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             }
 
             .bio-textarea:hover {
@@ -112,7 +112,7 @@
                 margin: 0px 0px 8px;
 
                 .edit-bio-characters-text {
-                font-family: Roboto, Open Sans, Verdana, sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 color: rgb(105, 107, 111);
                 font-size: 13px;
                 }
@@ -134,7 +134,7 @@
                     }
 
                     .edit-bio-globe-text {
-                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                         font-size: 15px;
                         color: rgb(59, 59, 59)
                     }
@@ -150,7 +150,7 @@
                         background-color: #E4E6EB;
                         margin-left: 4px;
                         border-radius: 5px;
-                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                         color: rgb(5, 5, 5);
                         display: flex;
                         align-items: center;
@@ -163,7 +163,7 @@
                         background-color: #E4E6EB;
                         margin-left: 4px;
                         border-radius: 5px;
-                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                         color: rgb(188, 192, 196);
                         display: flex;
                         align-items: center;
@@ -176,7 +176,7 @@
                         background-color: #1877F2;
                         margin-left: 4px;
                         border-radius: 5px;
-                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                         color: #FFFFFF;
                         display: flex;
                         align-items: center;
@@ -187,12 +187,20 @@
         }
 
         .profile-bio-exist {
-            font-family: Roboto, Open Sans, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 17px;
             color: #65676B;
             text-align: center;
             margin-top: 4px;
             font-weight: 400;
+        }
+
+        .profile-friend-bio-exist {
+            padding-bottom: 14px;
+        }
+
+        .profile-header-not-cuser-spacing {
+            margin-bottom: 26px;
         }
     }
     
@@ -231,28 +239,16 @@
                 align-items: center;
 
                 .profile-main-component-text {
-                    font-family: Roboto, Open Sans, Verdana, sans-serif;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                     font-weight: 450;
-                    transform: scale(1.0425,1);
                     font-size: 15px;
                     color: #65676B;
                     text-align: center;
                 }
 
-                .fix-about-text {
-                    transform: scale(1.07,1);
-                }
-
-                .fix-friends-text {
-                    transform: scale(1.07,1);
-                }
-
-                .fix-photos-text {
-                    transform: scale(1.06,1);
-                }
-
-                .fix-archive-text {
-                    transform: scale(1.07,1);
+                .profile-main-caret-icon {
+                    margin-left: 8px;
+                    color: #65676B;
                 }
             }
         }
@@ -302,20 +298,18 @@
             .profile-edit-profile-text-wrapper{ 
                 display: flex;
                 align-items: center;
-                width: 100px;
-                justify-content: space-between;
                 
                 .profile-edit-profile-text {
-                    font-family: Roboto, Open Sans, Verdana, sans-serif;
-                    font-size: 16px;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 15px;
+                    font-weight: 500;
                     color: #050505;
-                    transform: scale(1.02, 1);
                 }
 
                 .profile-edit-profile-icon {
                     height: 16px;
                     width: 16px;
-                    
+                    margin-right: 6px;
                 }
             }
         }
@@ -344,27 +338,16 @@
         border-bottom: 2px solid rgb(34, 123, 239);
 
         .profile-main-component-text {
-            font-family: Roboto, Open Sans, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-weight: 450;
-            transform: scale(1.0425,1);
             font-size: 15px;
             color: rgb(34, 122, 239);
             text-align: center;
         }
-        .fix-about-text {
-            transform: scale(1.07,1);
-        }
 
-        .fix-friends-text {
-            transform: scale(1.07,1);
-        }
-
-        .fix-photos-text {
-            transform: scale(1.06,1);
-        }
-
-        .fix-archive-text {
-            transform: scale(1.07,1);
+        .profile-main-caret-icon {
+            margin-left: 8px;
+            color: rgb(34, 122, 239);
         }
     }
 }
@@ -386,6 +369,337 @@
             height: 500px;
             background-color: rgb(255, 255, 255);
             border-radius: 10px;
+        }
+
+        .profile-create-post-wrapper {
+            padding: 12px 16px 10px;
+            background-color: rgb(255, 255, 255);
+            margin-top: 16px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 14px;
+
+            .profile-create-post-r1 {
+                display: flex;
+                flex-direction: row;
+                
+                .profile-create-post-img {
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 8px;
+                    border-radius: 40px;
+                    cursor: pointer;
+                }
+
+                .profile-create-post-btn {
+                    width: 396px;
+                    height: 40px;
+                    padding: 0px 12px;
+                    color: #65676B;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 17px;
+                    background-color: rgb(240, 242, 245);
+                    font-weight: 400;
+                    border-radius: 40px;
+
+                }
+
+                .profile-create-post-btn:hover {
+                    background-color: #e4e6e9;
+                }
+            }
+            
+            .profile-create-post-divider {
+                width: 468px;
+                border-bottom: 1px solid rgb(228, 230, 235);
+                margin: 12px 0px 8px 0px;
+            }
+
+            .profile-create-post-r2 {
+                display: flex;
+                flex-direction: row;
+
+                .profile-create-icon-wrapper {
+                    width: 140px;
+                    height: 20px;
+                    padding: 8px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+
+                    .profile-create-icon {
+                        height: 20px;
+                        width: 20px;
+                    }
+
+                    .profile-create-post-live-video {
+                        color: rgb(238, 44, 77);
+                        margin-left: 18px;
+                    }
+                    
+                    .profile-create-post-photo-video {
+                        color: rgb(75, 188, 102);
+                        margin-left: 10px;
+                    }
+
+                    .profile-create-post-life-event {
+                        color: rgb(64, 176, 211);
+                        margin-left: 20px;
+                    }
+
+                    .profile-create-post-tag-friends {
+                        color: rgb(34, 123, 239);
+                        margin-left: 14px;
+                    }
+
+                    .profile-create-post-feeling-activity {
+                        color: rgb(246, 184, 60);
+                        margin-left: 0px;
+                    }
+
+                    .profile-create-post-text {
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        margin-left: 8px;
+                        font-size: 15px;
+                        color: #65676B;
+                        font-weight: 500;
+                    }
+                }
+
+                .profile-create-icon-wrapper:hover {
+                    background-color: #f2f2f2;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+    }
+}
+
+
+.profile-create-post-modal-wrapper {
+    box-shadow:
+        0 2.3px 1.3px rgba(0, 0, 0, 0.07),
+        0 5.4px 2.9px rgba(0, 0, 0, 0.053),
+        0 9.7px 5.2px rgba(0, 0, 0, 0.042),
+        0 16.1px 8.7px rgba(0, 0, 0, 0.035),
+        0 26.5px 14.3px rgba(0, 0, 0, 0.03),
+        0 46.2px 25px rgba(0, 0, 0, 0.023),
+        0 100px 54px rgba(0, 0, 0, 0.013);
+    background-color: rgb(255, 255, 255);
+    border-radius: 7px;
+
+    .profile-create-post-modal-top {
+        height: 59px;
+        width: 500px;
+        border-bottom: 1px solid rgb(229, 229, 229);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        .profile-create-post-modal-top-text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
+            color: #050505;
+            font-weight: 600;
+        }
+
+        .profile-create-post-modal-close {
+            height: 36px;
+            width: 36px;
+            border-radius: 36px;
+            background-color: #E4E6EB;
+            position: absolute;
+            left: 448px;
+            cursor: pointer;
+
+            .profile-create-post-modal-x {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 30px;
+                color: rgb(96, 103, 112);
+                position: relative;
+                left: 11px;
+                bottom: 3px;
+            }
+        }
+    }
+    
+    .profile-create-post-user{
+        width: 468px;
+        height: 72px;
+        padding: 0px 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .profile-create-post-user-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .profile-create-post-current-name {
+            display: flex;
+            flex-direction: column;
+
+            .profile-create-post-name-text {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 15px;
+                color: #050505;
+                font-weight: 500;
+                margin-bottom: 2px;
+            }
+
+            .profile-create-post-privacy {
+                padding: 4px 8px;
+                background-color: rgb(228, 230, 235);
+                border-radius: 5px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: 2px;
+                position: relative;
+                width: 79px;
+
+                .profile-create-post-friend-icon {
+                    color: rgb(29, 31, 35);
+                    height: 12px;
+                    width: 12px;
+                    margin-right: 5px;
+                }
+
+                .profile-create-post-friends {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: #050505;
+                    margin-right: 4px;
+                }
+
+                .profile-create-post-arrow-down-icon {
+                    height: 12px;
+                    width: 12px;
+                    color: rgb(29, 31, 35);
+                    display: flex;
+                    align-items: center;
+                    font-weight: 12px;
+                    position: absolute;
+                    left: 74px;
+                    bottom: 8px;
+                }
+            }
+        }
+    }
+
+    .profile-create-post--actual-text {
+        width: 448px;
+        height: 215px;
+        padding: 4px 36px 0px 16px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 24px;
+        resize: none;
+        color: rgb(5, 5, 5);
+    }
+    .profile-create-post--actual-text::placeholder {
+        color: rgb(144, 148, 156);
+    }
+
+    .profile-create-post-add-post {
+        margin: 0px 16px;
+        padding: 8px;
+        border: 1px solid rgb(206, 208, 212);
+        width: 450px;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 7px;
+        justify-content: space-between;
+
+        .profile-create-post-add-post-text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            color: #050505;
+            padding: 8px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .profile-create-post-add-post-icons {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .profile-create-post-add-post-icons-wrapper {
+                height: 36px;
+                width: 36px;
+                border-radius: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                .profile-create-post-video-icon {
+                    color: rgb(157, 114, 249);
+                }
+
+                .profile-create-post-images-icon {
+                    color: rgb(75, 188, 102);
+                }
+
+                .profile-create-post-user-alt-icon {
+                    color: rgb(34, 123, 239);
+                }
+
+                .profile-create-post-map-marker-icon {
+                    color: rgb(243, 84, 68);
+                }
+
+                .profile-create-post-dots-icon {
+                    color: rgb(96, 103, 112);
+                }
+
+            }
+
+            .profile-create-post-add-post-icons-wrapper:hover {
+                background-color:#f2f2f2;
+            }
+        }
+    }
+
+    .profile-create-post-button {
+        padding: 16px;
+
+        .profile-create-post-button-text {
+            width: 444px;
+            height: 19px;
+            padding: 8px 12px;
+            color: rgb(255, 255, 255);
+            background-color: rgb(34, 123, 239);
+            border-radius: 5px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            text-align: center;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .profile-create-post-button-text-n {
+            width: 444px;
+            height: 19px;
+            padding: 8px 12px;
+            color: rgb(255, 255, 255);
+            background-color: rgb(228, 230, 235);
+            border-radius: 5px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            text-align: center;
+            font-weight: 500;
+            cursor: default;
         }
     }
 }

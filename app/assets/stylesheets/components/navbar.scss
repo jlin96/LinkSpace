@@ -9,6 +9,9 @@
     border-bottom: 1px solid rgb(221, 223, 226);
     position: relative;
     z-index: 1;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 
     .newsfeed-nav-logo {
         height: 40px;
@@ -33,7 +36,7 @@
             border-top-right-radius: 50px;
             border-bottom-left-radius: 50px;
             border-bottom-right-radius: 50px;
-            font-family: Roboto, Open Sans, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         .nav-search-bar-glasses {
@@ -41,6 +44,7 @@
             color: rgb(98,105, 114);
             position: relative;
             right: 226px;
+            bottom: 1px;
             pointer-events: none;
             transform: scaleY(1.06);
         }
@@ -149,7 +153,7 @@
 
                 .newsfeed-name {
                     margin-left: 7px;
-                    font-family: Roboto, Open Sans, Verdana, sans-serif;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                     font-size: 15px;
                     font-weight: 500;
                     color: #050505;
@@ -219,7 +223,7 @@
                                     width: 256px;
 
                                     .dropdown-user-name {
-                                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                                         font-size: 17px;
                                         font-weight: 500;
                                         padding-bottom: 1.5px;
@@ -228,7 +232,7 @@
                                     }
 
                                     .dropdown-see-profile {
-                                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                                         font-size: 15px;
                                         color: #65676B;
                                         padding-top: 1.5px;
@@ -291,13 +295,13 @@
                                     align-content: space-between;
 
                                     .dropdown-feedback {
-                                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                                         font-size: 15px;
                                         color: #050505;
                                     }
 
                                     .dropdown-improve-facebook {
-                                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                                         font-size: 13px;
                                         color: #65676B;
                                     }
@@ -311,7 +315,7 @@
                                     align-items: center;
 
                                     .dropdown-single-row-font {
-                                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                                         font-size: 15px;
                                         color: #050505;
                                     }
@@ -381,7 +385,7 @@
                                 }
 
                                 .dropdown-logout {
-                                    font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                                     font-size: 15px;
                                     color: #050505;
                                 }
@@ -423,7 +427,7 @@
         color: #d8dadf;
         opacity: .9;
         z-index: 1;
-        font-family: Roboto, Open Sans, Verdana, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 13px;
         top: 63px;
         border-radius: 7px;

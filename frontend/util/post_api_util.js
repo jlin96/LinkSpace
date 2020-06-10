@@ -14,8 +14,8 @@ export const fetchPost = (postId) => {
 
 export const createPost = (post) => {
     return $.ajax({
-        method: 'GET',
-        url: `/api/posts/${post.id}`,
+        method: 'POST',
+        url: '/api/posts',
         data: {post}
     })
 }
@@ -32,5 +32,12 @@ export const deletePost = (postId) => {
     return $.ajax({
         method: 'DELETE',
         url: `/api/posts/${postId}`
+    })
+}
+
+export const userPost = (userId) => {
+    return $.ajax({
+        method: 'GET',
+        url: `/api/users/${userId}/posts`
     })
 }

@@ -16,7 +16,7 @@
 
             .splash-logo {
                 color: #feffff;
-                font-family: Roboto, Open Sans, Verdana, sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 font-size: 34px;
                 font-weight: 600;
                 margin-top: 12px;
@@ -34,7 +34,7 @@
                     .login-email-error {
                         box-sizing: content-box;
                         color: #FFFFFF;
-                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                         font-size: 13px;
                         width: 300px;
                         height: 34px;
@@ -64,7 +64,7 @@
                         display: flex;
                         flex-direction: column;
                         padding-left: 14px;
-                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                         font-size: 13px;
 
                         .login-email, .login-password {
@@ -104,7 +104,7 @@
                         
                             .login-button-text {
                                 box-sizing: content-box;
-                                font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                                 color: #feffff;
                                 font-size: 12px;
                                 font-weight: 600;
@@ -131,7 +131,7 @@
                 .login-password-error {
                     box-sizing: content-box;
                     color: #FFFFFF;
-                    font-family: Roboto, Open Sans, Verdana, sans-serif;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                     font-size: 13px;
                     width: 240px;
                     height: 34px;
@@ -217,7 +217,7 @@
                     }
 
                     .newspaper-text-2 {
-                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                         color: #666;
                         margin-left: 3px;
                     }
@@ -247,7 +247,7 @@
                     }
 
                     .share-text-2 {
-                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                         color: #666;
                         margin-left: 3px;
                     }
@@ -277,7 +277,7 @@
                     }
 
                     .find-text-2 {
-                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                         color: #666;
                         margin-left: 3px;
                     }
@@ -315,7 +315,7 @@
                         height: 30px;
                         padding: 7px 17px;
                         color: #1C1E21;
-                        font-family: Roboto, Open Sans, Verdana, sans-serif;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                         font-size: 12px;
                         line-height: 15px;
                         text-align: center;
@@ -327,7 +327,7 @@
                 .splash-signup-form {
                     display: flex;
                     flex-direction: column;
-                    font-family: Roboto, Open Sans, Verdana, sans-serif;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                     position: relative;
 
                     .signup-row-one {
@@ -461,7 +461,7 @@
                         .signup-birthday-text {
                             box-sizing: content-box;
                             color: #90949C;
-                            font-family: Roboto, Open Sans, Verdana, sans-serif;
+                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                             font-size: 16px;
                             margin: 10px 0px 5px;
                             font-weight: 650;
@@ -527,7 +527,7 @@
                         .signup-gender-text {
                             box-sizing: content-box;
                             color: #90949C;
-                            font-family: Roboto, Open Sans, Verdana, sans-serif;
+                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                             font-size: 16px;
                             margin: 10px 0px 5px;
                             font-weight: 650;
@@ -545,7 +545,7 @@
                             }
 
                             .gender-input-text {
-                                font-family: Roboto, Open Sans, Verdana, sans-serif;
+                                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                                 font-size: 18px;
                                 color: #1D2129;
                                 padding: 0px 10px 0px 3px
@@ -615,7 +615,7 @@
                 .splash-create-page {
                     border-top: 1px solid #dddfe2;
                     color: #666;
-                    font-family: Roboto, Open Sans, Verdana, sans-serif;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                     font-size: 13px;
                     font-weight: bold;
                     margin-top: 10px;
@@ -637,7 +637,7 @@
     .splash-footer {
         width: 980px;
         margin: 0 auto;
-        font-family: Roboto, Open Sans, Verdana, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 12px;
         margin-top: 17px;
         display: flex;
@@ -705,7 +705,7 @@
                 flex-direction: row;
 
                 .services-li {
-                    font-family: Roboto, Open Sans, Verdana, sans-serif;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                     font-size: 12px;
                     color: #385898;
                     padding: 0px 0px 0px 20px;
@@ -726,7 +726,7 @@
 
             .copyright-text {
                 color: #737373;
-                font-family: Roboto, Open Sans, Verdana, sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 font-size: 11px;
             }
         }
@@ -775,7 +775,7 @@ div .icon {
 
 .signup-fname-error-msg-text{
     position: absolute;
-    font-family: Roboto, Open Sans, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: content-box;
     color: #FFFFFF;
     font-size: 13px;
@@ -804,7 +804,7 @@ div .icon {
 
 .signup-email-error-msg-text{
     position: absolute;
-    font-family: Roboto, Open Sans, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: content-box;
     color: #FFFFFF;
     font-size: 13px;
@@ -832,7 +832,7 @@ div .icon {
 
 .signup-password-error-msg-text{
     position: absolute;
-    font-family: Roboto, Open Sans, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: content-box;
     color: #FFFFFF;
     font-size: 13px;
@@ -859,7 +859,7 @@ div .icon {
 
 .signup-reemail-error-msg-text{
     position: absolute;
-    font-family: Roboto, Open Sans, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: content-box;
     color: #FFFFFF;
     font-size: 13px;
