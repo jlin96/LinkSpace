@@ -99,7 +99,7 @@ class PostIndexItem extends React.Component {
         return (
             <div className='profile-main-post-li' onMouseEnter={this.setCurrentPost}>
                 <div className='profile-main-post-li-r1-self'>
-                    <img className='profile-main-post-user-pic' src={window.headshot} />
+                    <img className='profile-main-post-user-pic' src={this.props.users[this.props.post.author_id].profile_picture} />
                     <div className='profile-main-post-user-name-wrapper'> 
                         {this.selfPostOrFriend()}
                         <div className='profile-main-post-time-wrapper'>
@@ -139,7 +139,7 @@ class PostIndexItem extends React.Component {
                 <div className='profile-main-post-bottom-divider'></div>
 
                 <div className='profile-main-post-create-comments'>
-                    <img className='profile-main-post-current-user-comment-image' src={window.headshot} />
+                    <img className='profile-main-post-current-user-comment-image' src={this.props.users[this.props.currentUser].profile_picture} />
                     <div className='profile-main-post-comment-container'>
                         <input className={this.state.comment_text_color} type="text" placeholder="Write a comment..." onFocus={this.changeTextColor}/>
                         <div className='profile-main-post-icon-container'>

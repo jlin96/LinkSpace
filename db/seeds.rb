@@ -1,4 +1,5 @@
 require 'faker'
+require 'open-uri'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -55,6 +56,13 @@ end
         bio: [Faker::Quote.famous_last_words, ''].sample,
         birthday: birthday_generator()
     )
+end
+
+User.all.each do |user|
+    profile = open('https://linkspace-seeds.s3.amazonaws.com/facebook_default.png')
+    cover = open('https://linkspace-seeds.s3.amazonaws.com/cover_default.png')  
+    user.profile_picture.attach(io: profile, filename: 'facebook_default.png')
+    user.cover_photo.attach(io: cover, filename: 'cover_default.png')
 end
 
 post1 = Post.create!(

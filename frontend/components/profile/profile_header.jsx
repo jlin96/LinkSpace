@@ -327,7 +327,7 @@ class ProfileHeader extends React.Component {
                 <header className='profile-header'>
                     <div className='profile-cover-photo'>
                         <div className='profile-picture-border'>
-                            <img src={window.headshot} className="profile-profile-picture" />
+                            <img src={this.props.user.profile_picture} className="profile-profile-picture" />
                         </div>
                     </div>
                 </header>

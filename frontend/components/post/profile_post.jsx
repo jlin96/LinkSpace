@@ -17,7 +17,7 @@ class ProfilePost extends React.Component {
                 <>
                     <div className='profile-create-post-r1'>
                         <Link to={`/users/${this.props.currentUser}`}>
-                            <img className="profile-create-post-img" src={window.headshot} />
+                            <img className="profile-create-post-img" src={this.props.user.profile_picture} />
                         </Link>
                         <button className="profile-create-post-btn" onClick={() => this.props.openModal("create post")}> 
                             What's on your mind?
@@ -51,7 +51,7 @@ class ProfilePost extends React.Component {
                 <>
                     <div className='profile-create-post-r1'>
                         <Link to={`/users/${this.props.currentUser}`}>
-                            <img className="profile-create-post-img" src={window.headshot} />
+                            <img className="profile-create-post-img" src={this.props.user.profile_picture} />
                         </Link>
                         <button className="profile-create-post-btn" onClick={() => this.props.openModal("create post")}>
                             {friendWall}

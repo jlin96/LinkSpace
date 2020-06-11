@@ -39,7 +39,7 @@ class PostForm extends React.Component {
                 return (
                     <>
                         <div className='profile-create-post-user'>
-                            <img className='profile-create-post-user-pic' src={window.headshot} />
+                            <img className='profile-create-post-user-pic' src={this.props.currentUser.profile_picture} />
                             <div className='profile-create-post-current-name'>
                                 <span className='profile-create-post-name-text'>
                                     {full_name}
@@ -66,7 +66,7 @@ class PostForm extends React.Component {
                 return (
                     <>
                         <div className='profile-create-post-user'>
-                            <img className='profile-create-post-user-pic' src={window.headshot} />
+                            <img className='profile-create-post-user-pic' src={this.props.currentUser.profile_picture} />
                             <div className='profile-create-post-current-name'>
                                 <span className='profile-create-post-name-text'>
                                     {full_name}
@@ -86,7 +86,7 @@ class PostForm extends React.Component {
             return (
                 <>
                     <div className='profile-create-post-user'>
-                        <img className='profile-create-post-user-pic' src={window.headshot} />
+                        <img className='profile-create-post-user-pic' src={this.props.currentUser.profile_picture} />
                         <div className='profile-create-post-current-name'>
                             <span className='profile-create-post-name-text'>
                                 {full_name}

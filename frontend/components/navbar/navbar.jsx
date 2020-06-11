@@ -156,7 +156,7 @@ class NavBar extends React.Component {
               <div className={this.state.dropdown_user_outer_wrapper}>
                 <div className={this.state.dropdown_inner_wrapper}>
                   <div className={this.state.dropdown_components}>
-                    <img className={this.state.user_profile_picture} src={window.headshot} />
+                    <img className={this.state.user_profile_picture} src={this.props.users[this.props.currentUser].profile_picture} />
                     <div className={this.state.user_name_wrapper}>
                       <span className={this.state.user}>
                         {full_name}
@@ -363,7 +363,7 @@ class NavBar extends React.Component {
 
                 <Link to={`/users/${this.props.currentUser}`}>
                   <div className="user-profile-headshot">
-                    <img className="newsfeed-headshot"src={window.headshot} />
+                    <img className="newsfeed-headshot" src={this.props.users[this.props.currentUser].profile_picture} />
                     <div className="newsfeed-name">
                       {this.props.users[this.props.currentUser].first_name}
                     </div>

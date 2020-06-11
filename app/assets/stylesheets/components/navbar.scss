@@ -159,10 +159,17 @@
                     color: #050505;
                 }
 
+                .newsfeed-headshot-wrapper {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 30px;
+                }
+
                 .newsfeed-headshot {
                     height: 30px;
                     width: 30px;
                     border-radius: 30px;
+                    object-fit: cover;
                 }
             }
 
@@ -212,6 +219,7 @@
                                     height: 60px;
                                     width: 60px;
                                     border-radius: 60px;
+                                    object-fit: cover;
                                 }
 
                                 .dropdown-user-name-wrapper {

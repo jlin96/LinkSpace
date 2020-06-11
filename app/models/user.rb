@@ -14,6 +14,10 @@ class User < ApplicationRecord
         foreign_key: :receiver_id,
         class_name: :Post
 
+    has_one_attached :profile_picture
+
+    has_one_attached :cover_photo
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         return ['The email you\'ve entered does not match any account.'] unless user
