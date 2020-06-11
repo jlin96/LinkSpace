@@ -1,0 +1,219 @@
+.profile-main-post-ul {
+    margin-bottom: 14px;
+
+    .profile-main-post-li {
+        background-color: rgb(255, 255, 255);
+        padding-top: 12px;
+        margin-bottom: 15px;
+        border-radius: 7px;
+
+        .profile-main-post-li-r1-self {
+            padding: 0px 16px;
+            height: 36px;
+            width: 468px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: row;
+
+            .profile-main-post-user-pic {
+                height: 40px;
+                width: 40px;
+                margin-right: 7px;
+                border-radius: 40px;
+            }
+
+            .profile-main-post-user-name-wrapper {
+                display: flex;
+                flex-direction: column;
+
+                .profile-main-post-user-name-nf {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 15px;
+                    color: #050505;
+                    font-weight: 500;
+                }
+
+                .profile-main-post-user-name-nf:hover {
+                    text-decoration: underline;
+                }
+
+                .profile-main-post-user-name-f {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 15px;
+                    color: #050505;
+                    font-weight: 500;
+
+                    .profile-main-post-user-name-fa {
+                        margin-right: 6px;
+                    }
+
+                    .profile-main-post-user-name-fa:hover {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+
+                    .profile-main-post-user-name-fr:hover {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+
+                    .profile-main-post-user-name-f-icon {
+                        margin-right: 5px;
+                        color: rgb(96, 103, 112);
+                    }
+                }
+            }
+
+            .profile-main-post-time-wrapper {
+                display: flex;
+                align-items: center;
+
+                .profile-main-post-time {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 13px;
+                    font-weight: 300;
+                    color: rgb(128, 130, 133);
+                    margin-right: 5px;
+                    cursor: pointer;
+                }   
+                
+                .profile-main-post-time:hover {
+                    text-decoration: underline;
+                }
+
+                .profile-main-post-time-icon {
+                    font-size: 2px;
+                    color: rgb(113, 115, 118);
+                }
+
+                .profile-main-post-time-icon-friends-wrapper {
+                    height: 21px;
+                    width: 21px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 21px;
+
+                    .profile-main-post-time-icon-friends{
+                        color: rgb(96, 103, 112);
+                        font-size: 12px;
+                        cursor: pointer;
+                    }
+                }
+
+                .profile-main-post-time-icon-friends-wrapper:hover {
+                    background-color: #f2f2f2;
+                }
+            }
+        }
+        .profile-main-post-actual-text {
+            padding: 0px 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: #050505;
+            width: 468px;
+        }
+
+        .profile-main-post-top-divider {
+            padding: 0px 16px;
+            width: 468px;
+            border-bottom: 1px solid rgb(206, 208, 212);
+            margin-top: 18px;
+            margin-bottom: 3px;
+        }
+
+        .profile-main-post-like-comment-share {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px 16px;
+
+            .profile-main-post-buttons {
+                width: 156px;
+                height: 32px;
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .profile-main-post-buttons-icons {
+                    margin-right: 6px;
+                    color: rgb(96, 103, 112);
+                }
+
+                .profile-main-post-buttons-text {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: rgb(101, 103, 107);
+                }
+            }
+
+            .profile-main-post-buttons:hover {
+                background-color: #f2f2f2;
+                cursor: pointer;
+            }
+        }
+
+        .profile-main-post-bottom-divider {
+            padding: 0px 16px;
+            width: 468px;
+            border-bottom: 1px solid rgb(206, 208, 212);
+            margin-top: 3px;
+            margin-bottom: 4px;
+        }
+
+        .profile-main-post-create-comments {
+            width: 468px;
+            height: 36px;
+            padding: 4px 16px 9px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .profile-main-post-current-user-comment-image {
+                height: 32px;
+                width: 32px;
+                margin-right: 5px;
+                border-radius: 32px;
+            }
+
+            .profile-main-post-comment-container {
+                width: 430px;
+                height: 36px;
+                background-color:	#f0f2f5;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                border-radius: 36px;
+
+                .profile-main-post-comment-write {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 15px;
+                    font-weight: 300;
+                    color: #65676b;
+                    padding-left: 13px;
+                    width: 293px;
+                }
+
+                .profile-main-post-icon-container {
+                    display: flex;
+                    flex-direction: row;
+                    margin-right: 8px;
+
+                    .profile-main-post-comment-icons {
+                        height: 16px;
+                        width: 16px;
+                        padding: 8px 6px;
+                        color: rgb(161, 165, 172);
+                        cursor: pointer;
+                    }
+                }
+            }
+
+
+        }
+    }
+}

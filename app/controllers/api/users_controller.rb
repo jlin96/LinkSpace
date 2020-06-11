@@ -53,7 +53,7 @@ class Api::UsersController < ApplicationController
 
     def posts
         @user = User.find_by(id: params[:id])
-        @posts = @user.authored_posts + @user.received_posts
+        @posts = @user.received_posts
         render :post
     end
 

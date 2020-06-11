@@ -89,7 +89,6 @@ class ProfilePost extends React.Component {
             return null;
         }
         const {user, currentUser, users, posts} = this.props;
-        debugger
         return (
             <>
                 <div className='profile-create-post-wrapper'>
