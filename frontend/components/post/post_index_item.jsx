@@ -1,14 +1,17 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretRight, faCircle, faUserFriends, faSmile, faCamera, faHatWizard, faStickyNote } from "@fortawesome/free-solid-svg-icons";
+import { faCaretRight, faCircle, faUserFriends, faSmile, faCamera, faHatWizard, faStickyNote, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp, faCommentAlt, faShareSquare } from '@fortawesome/free-regular-svg-icons'
 import { Link } from 'react-router-dom'
 
 class PostIndexItem extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { comment_text_color: 'profile-main-post-comment-write'}
         this.selfPostOrFriend = this.selfPostOrFriend.bind(this);
         this.timeAgo = this.timeAgo.bind(this);
+        this.changeTextColor = this.changeTextColor.bind(this);
+        this.setCurrentPost = this.setCurrentPost.bind(this);
     }
 
     selfPostOrFriend() {
@@ -81,13 +84,20 @@ class PostIndexItem extends React.Component {
         }
     }
 
-    //needs to be author pic
+    changeTextColor(e) {
+        this.setState({ comment_text_color: 'profile-main-post-comment-write profile-main-post-comment-write-color'})
+    }
+
+    setCurrentPost() {
+        this.props.currentPost(this.props.post)
+    }
+
     render () {
         if(Object.values(this.props.users).length === 1) {
             return null;
         }
         return (
-            <div className='profile-main-post-li'>
+            <div className='profile-main-post-li' onMouseEnter={this.setCurrentPost}>
                 <div className='profile-main-post-li-r1-self'>
                     <img className='profile-main-post-user-pic' src={window.headshot} />
                     <div className='profile-main-post-user-name-wrapper'> 
@@ -100,6 +110,9 @@ class PostIndexItem extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <button className='profile-main-post-edit-post' onClick={() => this.props.openModal("edit post")}>
+                        <FontAwesomeIcon className='profile-main-post-edit-post-icon' icon={faEllipsisH} />
+                    </button>
                 </div>
                 
                 <div className='profile-main-post-actual-text'>
@@ -128,7 +141,7 @@ class PostIndexItem extends React.Component {
                 <div className='profile-main-post-create-comments'>
                     <img className='profile-main-post-current-user-comment-image' src={window.headshot} />
                     <div className='profile-main-post-comment-container'>
-                        <input className='profile-main-post-comment-write' type="text" placeholder="Write a comment..."/>
+                        <input className={this.state.comment_text_color} type="text" placeholder="Write a comment..." onFocus={this.changeTextColor}/>
                         <div className='profile-main-post-icon-container'>
                             <FontAwesomeIcon className='profile-main-post-comment-icons' icon={faSmile} />
                             <FontAwesomeIcon className='profile-main-post-comment-icons' icon={faCamera} />

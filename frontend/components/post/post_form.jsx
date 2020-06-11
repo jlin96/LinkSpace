@@ -1,26 +1,88 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserFriends, faSortDown, faEllipsisH, faMapMarkerAlt, faUserAlt, faImages, faVideo } from "@fortawesome/free-solid-svg-icons";
+
 class PostForm extends React.Component {
     constructor(props){
         super(props);
-        this.state = { author_id: this.props.currentUser.id, receiver_id: this.props.user.id, body: '', create_post_button: 'profile-create-post-button-text-n'}
+        this.state = { 
+            author_id: this.props.currentUser.id, 
+            receiver_id: this.props.user.id, 
+            body: this.props.body, 
+            create_post_button: 'profile-create-post-button-text-n',
+        }
         this.handleChange = this.handleChange.bind(this);
         this.submitPost = this.submitPost.bind(this);
         this.userOrFriendWall = this.userOrFriendWall.bind(this);
     }
 
     handleChange (e) {
-        if(e.target.value.length > 0) {
-            this.setState({ body: e.target.value, create_post_button: 'profile-create-post-button-text' });
+        if(this.props.type === 'create') {
+            if (e.target.value.length > 0) {
+                this.setState({ body: e.target.value, create_post_button: 'profile-create-post-button-text' });
+            } else {
+                this.setState({ body: e.target.value, create_post_button: 'profile-create-post-button-text-n' });
+            }  
         } else {
-            this.setState({ body: e.target.value, create_post_button: 'profile-create-post-button-text-n' });
-        }  
+            if (e.target.value.length > 0 && e.target.value !== this.props.body) {
+                this.setState({ body: e.target.value, create_post_button: 'profile-create-post-button-text' });
+            } else {
+                this.setState({ body: e.target.value, create_post_button: 'profile-create-post-button-text-n' });
+            }  
+        }
     }
 
     userOrFriendWall() {
         const full_name = this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name
-        if(this.props.user.id === this.props.currentUser.id) {
+        if(this.props.type === 'create') {
+            if (this.props.user.id === this.props.currentUser.id) {
+                return (
+                    <>
+                        <div className='profile-create-post-user'>
+                            <img className='profile-create-post-user-pic' src={window.headshot} />
+                            <div className='profile-create-post-current-name'>
+                                <span className='profile-create-post-name-text'>
+                                    {full_name}
+                                </span>
+                                <button className='profile-create-post-privacy'>
+                                    <FontAwesomeIcon className='profile-create-post-friend-icon' icon={faUserFriends} />
+                                    <span className='profile-create-post-friends'>
+                                        Friends
+                                </span>
+                                    <FontAwesomeIcon className='profile-create-post-arrow-down-icon' icon={faSortDown} />
+                                </button>
+                            </div>
+                        </div>
+                        <textarea
+                            placeholder="What's on your mind?"
+                            className='profile-create-post--actual-text'
+                            name={this.state.body}
+                            onChange={this.handleChange}
+                        ></textarea>
+                    </>
+                )
+            } else {
+                const friendWallPost = `Write something to ${this.props.user.first_name}...`
+                return (
+                    <>
+                        <div className='profile-create-post-user'>
+                            <img className='profile-create-post-user-pic' src={window.headshot} />
+                            <div className='profile-create-post-current-name'>
+                                <span className='profile-create-post-name-text'>
+                                    {full_name}
+                                </span>
+                            </div>
+                        </div>
+                        <textarea
+                            placeholder={friendWallPost}
+                            className='profile-create-post--actual-text'
+                            name={this.state.body}
+                            onChange={this.handleChange}
+                        ></textarea>
+                    </>
+                )
+            }
+        } else {
             return (
                 <>
                     <div className='profile-create-post-user'>
@@ -39,27 +101,7 @@ class PostForm extends React.Component {
                         </div>
                     </div>
                     <textarea
-                        placeholder="What's on your mind?"
-                        className='profile-create-post--actual-text'
-                        name={this.state.body}
-                        onChange={this.handleChange}
-                    ></textarea>
-                </>
-            )
-        } else {
-            const friendWallPost = `Write something to ${this.props.user.first_name}...`
-            return (
-                <>
-                    <div className='profile-create-post-user'>
-                        <img className='profile-create-post-user-pic' src={window.headshot} />
-                        <div className='profile-create-post-current-name'>
-                            <span className='profile-create-post-name-text'>
-                                {full_name}
-                            </span>
-                        </div>
-                    </div>
-                    <textarea
-                        placeholder={friendWallPost}
+                        value={this.state.body}
                         className='profile-create-post--actual-text'
                         name={this.state.body}
                         onChange={this.handleChange}
@@ -67,12 +109,21 @@ class PostForm extends React.Component {
                 </>
             )
         }
+        
     }
 
     submitPost(e) { 
-        if(this.state.body.length > 0) {
-            this.props.createPost(this.state);
-            this.props.closeModal();
+        if(this.props.type === 'create') {
+            if (this.state.body.length > 0) {
+                this.props.action(this.state);
+                this.props.closeModal();
+            }
+        } else {
+            const updatedPost = {id: this.props.post.id, body: this.state.body, author_id: this.state.author_id, receiver_id: this.state.receiver_id}
+            if (this.state.body.length > 0 && e.target.value !== this.props.body) {
+                this.props.action(updatedPost);
+                this.props.closeModal();
+            }
         }
     }
 

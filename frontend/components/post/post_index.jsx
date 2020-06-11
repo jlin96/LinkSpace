@@ -11,7 +11,7 @@ class PostIndex extends React.Component {
             return null;
         }
 
-        const { user, currentUser, openModal, users} = this.props
+        const { user, currentUser, openModal, users, currentPost} = this.props
         const postIndexLi = Object.values(this.props.posts).reverse().map( (post, idx) => {
             return (
                 <PostIndexItem 
@@ -21,6 +21,7 @@ class PostIndex extends React.Component {
                     currentUser={currentUser} 
                     openModal={openModal}
                     users={users}
+                    currentPost={currentPost}
                 />
             )
         })

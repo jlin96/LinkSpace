@@ -105,6 +105,25 @@
                     background-color: #f2f2f2;
                 }
             }
+
+            .profile-main-post-edit-post {
+                height: 36px;
+                width: 36px;
+                border-radius: 36px;
+                margin-left: auto; 
+                margin-right: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .profile-main-post-edit-post-icon {
+                    color: rgb(96, 103, 112);
+                }
+            }
+
+            .profile-main-post-edit-post:hover {
+                background-color: #f2f2f2;
+            }
         }
         .profile-main-post-actual-text {
             padding: 0px 16px;
@@ -196,6 +215,10 @@
                     color: #65676b;
                     padding-left: 13px;
                     width: 293px;
+                }
+
+                .profile-main-post-comment-write-color {
+                    color: #050505;
                 }
 
                 .profile-main-post-icon-container {

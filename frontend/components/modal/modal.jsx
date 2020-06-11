@@ -1,5 +1,6 @@
 import React from 'react';
 import PostFormContainer from '../post/post_form_container';
+import EditPostFormContainer from '../post/post_form_edit_container';
 
 function Modal({ modal, closeModal, user, currentUser }) {
     if (!modal) {
@@ -10,6 +11,11 @@ function Modal({ modal, closeModal, user, currentUser }) {
         case 'create post':
             component = <PostFormContainer user={user} currentUser={currentUser}/>;
             break;
+
+        case 'edit post':
+            component = <EditPostFormContainer />
+            break;
+            
         default:
             return null;
     }

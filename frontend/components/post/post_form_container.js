@@ -3,9 +3,14 @@ import { closeModal } from '../../actions/modal_actions';
 import { createPost } from '../../actions/post_actions';
 import PostForm from './post_form';
 
-const mapDispatchToProps = dispatch => ({
-    closeModal: () => dispatch(closeModal()),
-    createPost: post => dispatch(createPost(post))
+const mapStateToProps = state => ({
+    type: 'create',
+    body: '',
 })
 
-export default connect(null, mapDispatchToProps)(PostForm);
+const mapDispatchToProps = dispatch => ({
+    closeModal: () => dispatch(closeModal()),
+    action: post => dispatch(createPost(post)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm);

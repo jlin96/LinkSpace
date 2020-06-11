@@ -12,6 +12,12 @@ class Profile extends React.Component {
         this.props.fetchUsers();
     }
 
+    componentDidUpdate(prevProps) {
+        if(prevProps.location.pathname !== this.props.location.pathname) {
+            this.props.userPost(this.props.match.params.userId);
+        }
+    }
+
     render() {
         if (this.props.user === undefined) {
             return null;
