@@ -140,6 +140,7 @@ class PostForm extends React.Component {
             formData.append('post[author_id]', this.state.author_id);
             formData.append('post[receiver_id]', this.state.receiver_id);
             this.props.photoPost(formData);
+            this.props.closeModal();
         } else {
             if (this.props.type === 'create') {
                 // debugger

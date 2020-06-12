@@ -1,24 +1,14 @@
-# README
+# LinkSpace
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Linkspace](https://linkspace-aa.herokuapp.com/) is a pixel perfect clone of the popular social media website [Facebook](https://www.facebook.com/) that allows you to create posts.
 
-Things you may want to cover:
+## Technology
+Linkspace utilizes the following technologies: Ruby on Rails, Ruby, Javascript, React, Redux, CSS, HTML, AWS S3, and Heroku.
 
-* Ruby version
+## Features
 
-* System dependencies
+### 1.User Authentication
+Users can login/signup. It comes with custom errors for each field that is incorrect or invalid.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 2.Posting
+Users can post and edit their own post or other users wall.
