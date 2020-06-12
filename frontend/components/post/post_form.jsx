@@ -10,21 +10,23 @@ class PostForm extends React.Component {
             receiver_id: this.props.user.id, 
             body: this.props.body, 
             create_post_button: 'profile-create-post-button-text-n',
+            post_photo: null
         }
         this.handleChange = this.handleChange.bind(this);
         this.submitPost = this.submitPost.bind(this);
         this.userOrFriendWall = this.userOrFriendWall.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     handleChange (e) {
         if(this.props.type === 'create') {
-            if (e.target.value.length > 0) {
+            if (e.target.value.length > 0 || this.state.post_photo) {
                 this.setState({ body: e.target.value, create_post_button: 'profile-create-post-button-text' });
             } else {
                 this.setState({ body: e.target.value, create_post_button: 'profile-create-post-button-text-n' });
             }  
         } else {
-            if (e.target.value.length > 0 && e.target.value !== this.props.body) {
+            if ((e.target.value.length > 0 && e.target.value !== this.props.body) || this.state.post_photo) {
                 this.setState({ body: e.target.value, create_post_button: 'profile-create-post-button-text' });
             } else {
                 this.setState({ body: e.target.value, create_post_button: 'profile-create-post-button-text-n' });
@@ -34,6 +36,7 @@ class PostForm extends React.Component {
 
     userOrFriendWall() {
         const full_name = this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name
+        const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className='profile-create-post-img-preview'/> : null;
         if(this.props.type === 'create') {
             if (this.props.user.id === this.props.currentUser.id) {
                 return (
@@ -53,12 +56,17 @@ class PostForm extends React.Component {
                                 </button>
                             </div>
                         </div>
-                        <textarea
-                            placeholder="What's on your mind?"
-                            className='profile-create-post--actual-text'
-                            name={this.state.body}
-                            onChange={this.handleChange}
-                        ></textarea>
+                        <div className='profile-create-post-content'>
+                            <textarea
+                                placeholder="What's on your mind?"
+                                className='profile-create-post--actual-text'
+                                name={this.state.body}
+                                onChange={this.handleChange}
+                            ></textarea>
+                            <div className='profile-create-post-img-wrapper'>
+                                {preview}
+                            </div>
+                        </div>
                     </>
                 )
             } else {
@@ -73,12 +81,17 @@ class PostForm extends React.Component {
                                 </span>
                             </div>
                         </div>
-                        <textarea
-                            placeholder={friendWallPost}
-                            className='profile-create-post--actual-text'
-                            name={this.state.body}
-                            onChange={this.handleChange}
-                        ></textarea>
+                        <div className='profile-create-post-content'>
+                            <textarea
+                                placeholder={friendWallPost}
+                                className='profile-create-post--actual-text'
+                                name={this.state.body}
+                                onChange={this.handleChange}
+                            ></textarea>
+                            <div className='profile-create-post-img-wrapper'>
+                                {preview}
+                            </div>
+                        </div>
                     </>
                 )
             }
@@ -100,12 +113,17 @@ class PostForm extends React.Component {
                             </button>
                         </div>
                     </div>
-                    <textarea
-                        value={this.state.body}
-                        className='profile-create-post--actual-text'
-                        name={this.state.body}
-                        onChange={this.handleChange}
-                    ></textarea>
+                    <div className='profile-create-post-content'>
+                        <textarea
+                            value={this.state.body}
+                            className='profile-create-post--actual-text'
+                            name={this.state.body}
+                            onChange={this.handleChange}
+                        ></textarea>
+                        <div className='profile-create-post-img-wrapper'>
+                            {preview}
+                        </div>
+                    </div>
                 </>
             )
         }
@@ -113,17 +131,42 @@ class PostForm extends React.Component {
     }
 
     submitPost(e) { 
-        if(this.props.type === 'create') {
-            if (this.state.body.length > 0) {
-                this.props.action(this.state);
-                this.props.closeModal();
-            }
+        // debugger
+        e.preventDefault();
+        if (this.state.post_photo) {
+            const formData = new FormData();
+            formData.append('post[body]', this.state.body);
+            formData.append('post[post_photo]', this.state.post_photo);
+            formData.append('post[author_id]', this.state.author_id);
+            formData.append('post[receiver_id]', this.state.receiver_id);
+            this.props.photoPost(formData);
         } else {
-            const updatedPost = {id: this.props.post.id, body: this.state.body, author_id: this.state.author_id, receiver_id: this.state.receiver_id}
-            if (this.state.body.length > 0 && e.target.value !== this.props.body) {
-                this.props.action(updatedPost);
-                this.props.closeModal();
+            if (this.props.type === 'create') {
+                // debugger
+                const createdPost = { body: this.state.body, author_id: this.state.author_id, receiver_id: this.state.receiver_id }
+                if (this.state.body.length > 0) {
+                    this.props.action(createdPost);
+                    this.props.closeModal();
+                }
+            } else {
+                const updatedPost = { id: this.props.post.id, body: this.state.body, author_id: this.state.author_id, receiver_id: this.state.receiver_id }
+                if (this.state.body.length > 0 && e.target.value !== this.props.body) {
+                    this.props.action(updatedPost);
+                    this.props.closeModal();
+                }
             }
+        }
+    }
+
+    handleFile(e) {
+        // debugger
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({ post_photo: file, photoUrl: fileReader.result, create_post_button: 'profile-create-post-button-text' });
+        }   
+        if (file) {
+            fileReader.readAsDataURL(file);
         }
     }
 
@@ -147,9 +190,10 @@ class PostForm extends React.Component {
                             <div className='profile-create-post-add-post-icons-wrapper'>
                                 <FontAwesomeIcon className='profile-create-post-video-icon' icon={faVideo} />
                             </div>
-                            <div className='profile-create-post-add-post-icons-wrapper'>
+                            <label className='profile-create-post-add-post-icons-wrapper'>
+                                <input type="file" onChange={this.handleFile} className='profile-create-post-file-upload'/>
                                 <FontAwesomeIcon className='profile-create-post-images-icon' icon={faImages} />
-                            </div>
+                            </label>
                             <div className='profile-create-post-add-post-icons-wrapper'>
                                 <FontAwesomeIcon className='profile-create-post-user-alt-icon' icon={faUserAlt} />
                             </div>

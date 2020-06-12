@@ -8,4 +8,6 @@ class Post < ApplicationRecord
     belongs_to :receiver,
         foreign_key: :receiver_id,
         class_name: :User
+
+    has_one_attached :post_photo
 end

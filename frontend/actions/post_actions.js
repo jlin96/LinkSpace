@@ -60,3 +60,11 @@ export const userPost = userId => dispatch => {
         return dispatch(receiveAllPosts(posts));
     });
 }
+
+export const photoPost = formData => dispatch => {
+    // debugger
+    return postAPIUtil.photoPost(formData).then( post => {
+        // debugger
+        return dispatch(receivePost(post));
+    });
+}

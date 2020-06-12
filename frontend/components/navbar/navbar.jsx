@@ -131,7 +131,7 @@ class NavBar extends React.Component {
              <div className="icon-messages icon-messages-account">{this.state.currentHover}</div>
            );
        } 
-       return <div></div>
+       return null
     }
 
     dropdownMenu () {
@@ -284,17 +284,19 @@ class NavBar extends React.Component {
     render() {
         return (
           <header className="newsfeed-nav-bar">
-            <Link to="/"><img src={window.main_logo} className="newsfeed-nav-logo"/></Link>
-            <div className="newsfeed-nav-search-bar-wrapper" onClick={this.addHiddenToGlasses} onBlur={this.removeHiddenGlasses}>
-              <input
-                type="text"
-                className="newsfeed-nav-search-bar"
-                placeholder="     Search Facebook"
-              />
-              <FontAwesomeIcon
-                className={this.state.glasses_icon}
-                icon={faSearch}
-              />
+            <div className="newsfeed-nav-bar-p1">
+              <Link to="/"><img src={window.main_logo} className="newsfeed-nav-logo"/></Link>
+              <div className="newsfeed-nav-search-bar-wrapper" onClick={this.addHiddenToGlasses} onBlur={this.removeHiddenGlasses}>
+                <input
+                  type="text"
+                  className="newsfeed-nav-search-bar"
+                  placeholder="     Search Facebook"
+                />
+                <FontAwesomeIcon
+                  className={this.state.glasses_icon}
+                  icon={faSearch}
+                />
+              </div>
             </div>
             <ul className="newsfeed-nav-main">
               <li className="nav-main-primary-bottom home">

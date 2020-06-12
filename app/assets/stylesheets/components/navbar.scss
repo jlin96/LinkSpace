@@ -12,45 +12,51 @@
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    justify-content: space-between;
 
-    .newsfeed-nav-logo {
-        height: 40px;
-        width: 40px;
-        margin-left: 16px;
-        margin-right: 10px;
-    }
-    
-    .newsfeed-nav-search-bar-wrapper {
-        position: relative;
+    .newsfeed-nav-bar-p1 {
         display: flex;
         align-items: center;
 
-        .newsfeed-nav-search-bar {
-            box-sizing: content-box;
-            background-color: rgb(240, 242, 245);
-            height: 24px;
-            width: 208px;
-            color: rgb(171,173,176);
-            padding: 7px 16px 9px 16px;
-            border-top-left-radius: 50px;
-            border-top-right-radius: 50px;
-            border-bottom-left-radius: 50px;
-            border-bottom-right-radius: 50px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        .newsfeed-nav-logo {
+            height: 40px;
+            width: 40px;
+            margin-left: 16px;
+            margin-right: 10px;
         }
-
-        .nav-search-bar-glasses {
-            font-size: 13px;
-            color: rgb(98,105, 114);
+        
+        .newsfeed-nav-search-bar-wrapper {
             position: relative;
-            right: 226px;
-            bottom: 1px;
-            pointer-events: none;
-            transform: scaleY(1.06);
-        }
+            display: flex;
+            align-items: center;
 
-        .hiddenGlasses {
-            visibility: hidden;
+            .newsfeed-nav-search-bar {
+                box-sizing: content-box;
+                background-color: rgb(240, 242, 245);
+                height: 24px;
+                width: 208px;
+                color: rgb(171,173,176);
+                padding: 7px 16px 9px 16px;
+                border-top-left-radius: 50px;
+                border-top-right-radius: 50px;
+                border-bottom-left-radius: 50px;
+                border-bottom-right-radius: 50px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            .nav-search-bar-glasses {
+                font-size: 13px;
+                color: rgb(98,105, 114);
+                position: relative;
+                right: 226px;
+                bottom: 1px;
+                pointer-events: none;
+                transform: scaleY(1.06);
+            }
+
+            .hiddenGlasses {
+                visibility: hidden;
+            }
         }
     }
 
@@ -59,7 +65,6 @@
         flex-direction: row;
         align-items: center;
         color: rgb(101, 103, 107);
-        padding: 0px 0px 0px 57px;
 
         .nav-main {
             box-sizing: content-box;
@@ -91,8 +96,8 @@
     }
 
     .newsfeed-nav-user-nav {
-        margin-left: auto; 
-        margin-right: 0;
+        // margin-left: auto; 
+        // margin-right: 0;
         padding-right: 16px;
 
         .user-nav-components {

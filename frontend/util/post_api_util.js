@@ -41,3 +41,13 @@ export const userPost = (userId) => {
         url: `/api/users/${userId}/posts`
     })
 }
+
+export const photoPost = (formData) => {
+    return $.ajax({
+        method: 'POST',
+        url: '/api/posts',
+        data: formData,
+        contentType: false,
+        processData: false
+    })
+}

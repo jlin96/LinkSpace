@@ -12,7 +12,7 @@ class Newsfeed extends React.Component {
   render () {
     return (
     <div className="newsfeed">
-      <div>hello its newsfeed</div>
+      {/* <div>hello its newsfeed</div> */}
     </div>
     );
   }

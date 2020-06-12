@@ -1,3 +1,4 @@
+require 'open-uri'
 class Api::UsersController < ApplicationController
     skip_before_action :verify_authenticity_token
 
@@ -8,6 +9,11 @@ class Api::UsersController < ApplicationController
     
     def create
         @user = User.new(user_params)
+        profile = open('https://linkspace-seeds.s3.amazonaws.com/facebook_default.png')
+        cover = open('https://linkspace-seeds.s3.amazonaws.com/cover_default.png')  
+        @user.profile_picture.attach(io: profile, filename: 'facebook_default.png')
+        @user.cover_photo.attach(io: cover, filename: 'cover_default.png')
+
         if @user.save
             login!(@user)
             render :show
