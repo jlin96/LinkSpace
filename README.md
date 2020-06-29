@@ -9,6 +9,7 @@ Linkspace utilizes the following technologies: Ruby on Rails, Ruby, Javascript, 
 
 ### 1.User Authentication
 Users can login/signup. It comes with custom errors for each field that is incorrect or invalid.
+(https://giphy.com/gifs/cODrl4EZ0CDat25Vv2/html5) 
 
 ### 2.Posting
 Users can post and edit their own post or other users wall.

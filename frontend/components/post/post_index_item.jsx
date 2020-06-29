@@ -96,6 +96,7 @@ class PostIndexItem extends React.Component {
         if(Object.values(this.props.users).length === 1) {
             return null;
         }
+        debugger
         return (
             <div className='profile-main-post-li' onMouseEnter={this.setCurrentPost}>
                 <div className='profile-main-post-li-r1-self'>
@@ -117,6 +118,7 @@ class PostIndexItem extends React.Component {
                 
                 <div className='profile-main-post-actual-text'>
                     {this.props.post.body}
+                    {this.props.post.post_photo}
                 </div>
 
                 <div className='profile-main-post-top-divider'></div>

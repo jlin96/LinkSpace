@@ -12,6 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <meta property="og:title" content="LinkSpace" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="linkspace-aa.herokuapp.com/#/" />
+    <meta property="og:image" content="<%= image_url('homepage.png') %>" />
+    <meta property="og:description" content="Full stack clone of the popular social media application Facebook" />
+    <meta property="og:site_name" content="LinkSpace" />
+
     <script type="text/javascript">
       window.main_logo = "<%= image_url('facebook.png') %>";
     </script>
