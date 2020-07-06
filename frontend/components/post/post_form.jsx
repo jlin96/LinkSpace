@@ -131,10 +131,11 @@ class PostForm extends React.Component {
     }
 
     submitPost(e) { 
-        // debugger
+        debugger
         e.preventDefault();
         if (this.state.post_photo) {
             const formData = new FormData();
+            debugger
             formData.append('post[body]', this.state.body);
             formData.append('post[post_photo]', this.state.post_photo);
             formData.append('post[author_id]', this.state.author_id);
@@ -143,7 +144,6 @@ class PostForm extends React.Component {
             this.props.closeModal();
         } else {
             if (this.props.type === 'create') {
-                // debugger
                 const createdPost = { body: this.state.body, author_id: this.state.author_id, receiver_id: this.state.receiver_id }
                 if (this.state.body.length > 0) {
                     this.props.action(createdPost);

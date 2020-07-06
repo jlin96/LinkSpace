@@ -10,7 +10,7 @@ class PostIndex extends React.Component {
         if (this.props.user === undefined || this.props.posts === {}) {
             return null;
         }
-
+        debugger
         const { user, currentUser, openModal, users, currentPost} = this.props
         const postIndexLi = Object.values(this.props.posts).reverse().map( (post, idx) => {
             return (
