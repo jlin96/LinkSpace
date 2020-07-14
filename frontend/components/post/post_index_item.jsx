@@ -1,18 +1,29 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretRight, faCircle, faUserFriends, faSmile, faCamera, faHatWizard, faStickyNote, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
-import { faThumbsUp, faCommentAlt, faShareSquare } from '@fortawesome/free-regular-svg-icons'
-import { Link } from 'react-router-dom'
+import { faCaretRight, faCircle, faUserFriends, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faCommentAlt, faShareSquare } from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
+import CommentForm from '../comments/comment_form';
+import CommentIndexContainer from '../comments/comment_index_container';
 
 class PostIndexItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { comment_text_color: 'profile-main-post-comment-write'}
         this.selfPostOrFriend = this.selfPostOrFriend.bind(this);
         this.timeAgo = this.timeAgo.bind(this);
-        this.changeTextColor = this.changeTextColor.bind(this);
         this.setCurrentPost = this.setCurrentPost.bind(this);
+        this.state = {post: this.props.post}
     }
+
+    componentDidMount() {
+        this.props.fetchComments(this.props.post.id);
+    }
+
+    // componentDidUpdate(prevProps) {
+    //     debugger
+    //     if (prevProps.post !== this.props.post) {
+    //     }
+    // }
 
     selfPostOrFriend() {
         const {users, post} = this.props
@@ -84,22 +95,19 @@ class PostIndexItem extends React.Component {
         }
     }
 
-    changeTextColor(e) {
-        this.setState({ comment_text_color: 'profile-main-post-comment-write profile-main-post-comment-write-color'})
-    }
-
     setCurrentPost() {
         this.props.currentPost(this.props.post)
     }
 
     render () {
-        if(Object.values(this.props.users).length === 1) {
+        if(Object.values(this.props.users).length === 1 || this.props.post === undefined || this.props.users === undefined) {
             return null;
         }
+        const { currentUser, createComment, fetchComments, post, users } = this.props;
         return (
             <div className='profile-main-post-li' onMouseEnter={this.setCurrentPost}>
                 <div className='profile-main-post-li-r1-self'>
-                    <img className='profile-main-post-user-pic' src={this.props.users[this.props.post.author_id].profile_picture} />
+                    <Link to={`/users/${this.props.post.author_id}`}><img className='profile-main-post-user-pic' src={this.props.users[this.props.post.author_id].profile_picture} /></Link>
                     <div className='profile-main-post-user-name-wrapper'> 
                         {this.selfPostOrFriend()}
                         <div className='profile-main-post-time-wrapper'>
@@ -115,8 +123,8 @@ class PostIndexItem extends React.Component {
                     </button>
                 </div>
                 
-                <div className='profile-main-post-actual-text'>
-                    {this.props.post.body}
+                <div className='profile-main-post-actual-text-wrapper'>
+                    <div className="profile-main-post-actual-text">{this.props.post.body}</div>
                 </div>
                 <img className="profile-main-post-photo" src={this.props.post.post_photo} />
 
@@ -139,18 +147,9 @@ class PostIndexItem extends React.Component {
 
                 <div className='profile-main-post-bottom-divider'></div>
 
-                <div className='profile-main-post-create-comments'>
-                    <img className='profile-main-post-current-user-comment-image' src={this.props.users[this.props.currentUser].profile_picture} />
-                    <div className='profile-main-post-comment-container'>
-                        <input className={this.state.comment_text_color} type="text" placeholder="Write a comment..." onFocus={this.changeTextColor}/>
-                        <div className='profile-main-post-icon-container'>
-                            <FontAwesomeIcon className='profile-main-post-comment-icons' icon={faSmile} />
-                            <FontAwesomeIcon className='profile-main-post-comment-icons' icon={faCamera} />
-                            <FontAwesomeIcon className='profile-main-post-comment-icons' icon={faHatWizard} />
-                            <FontAwesomeIcon className='profile-main-post-comment-icons' icon={faStickyNote} />
-                        </div>
-                    </div>
-                </div>
+                <CommentIndexContainer post={post} users={users}/>
+
+                <CommentForm currentUser={currentUser} createComment={createComment} post={post} users={users}/>
             </div>
         )
     }

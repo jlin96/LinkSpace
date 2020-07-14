@@ -62,9 +62,7 @@ export const userPost = userId => dispatch => {
 }
 
 export const photoPost = formData => dispatch => {
-    // debugger
     return postAPIUtil.photoPost(formData).then( post => {
-        // debugger
         return dispatch(receivePost(post));
     });
 }

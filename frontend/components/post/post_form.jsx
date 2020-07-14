@@ -131,11 +131,9 @@ class PostForm extends React.Component {
     }
 
     submitPost(e) { 
-        debugger
         e.preventDefault();
         if (this.state.post_photo) {
             const formData = new FormData();
-            debugger
             formData.append('post[body]', this.state.body);
             formData.append('post[post_photo]', this.state.post_photo);
             formData.append('post[author_id]', this.state.author_id);

@@ -65,27 +65,27 @@ User.all.each do |user|
     user.cover_photo.attach(io: cover, filename: 'cover_default.png')
 end
 
-post1 = Post.create!(
-    author_id: 1,
-    receiver_id: 1,
-    body: 'hello self'
-)
-post2 = Post.create!(
-    author_id: 2,
-    receiver_id: 1,
-    body: 'hello jesse - r'
-)
+# post1 = Post.create!(
+#     author_id: 1,
+#     receiver_id: 1,
+#     body: 'hello self'
+# )
+# post2 = Post.create!(
+#     author_id: 2,
+#     receiver_id: 1,
+#     body: 'hello jesse - r'
+# )
 
-post3 = Post.create!(
-    author_id: 1,
-    receiver_id: 2,
-    body: 'hello raymond - j'
-)
-post4 = Post.create!(
-    author_id: 2,
-    receiver_id: 2,
-    body: 'hello self r'
-)
+# post3 = Post.create!(
+#     author_id: 1,
+#     receiver_id: 2,
+#     body: 'hello raymond - j'
+# )
+# post4 = Post.create!(
+#     author_id: 2,
+#     receiver_id: 2,
+#     body: 'hello self r'
+# )
 
 5.times do 
   Post.create!(

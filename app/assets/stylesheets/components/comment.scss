@@ -1,0 +1,84 @@
+.post-comments-ul {
+    display: flex;
+    flex-direction: column;
+
+    .comment-wrapper {
+        display: flex;
+        flex-direction: row;
+        padding: 4px 16px 0px;
+
+        .comment-profile-pic {
+            height: 32px;
+            width: 32px;
+            border-radius: 32px;
+            object-fit: cover;
+            margin-right: 5px;
+        }
+
+        .comment-profile-pic:hover {
+            cursor: pointer;
+        }
+
+        .comment-like-wrapper {
+            display: flex;
+            flex-direction: column;
+
+            .comment-content-wrapper {
+                padding: 8px 12px;
+                background-color: rgb(240, 242, 245);
+                max-width: 430px;
+                border-radius: 20px;
+                color: #050505;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            
+                .comment-user-name {
+                    font-size: 13px;
+                    font-weight: 600;
+                }
+
+                .comment-user-name:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+
+                .comment-text {
+                    line-height: 1.3333;
+                    font-size: 15px;
+                    font-weight: 350;
+                    overflow-wrap: break-word;
+                }
+            }
+
+            .comment-like-wrapper-btm {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding-left: 12px;
+
+                .comment-like {
+                    font-size: 12px;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    color: #65676B;
+                    font-weight: bold;
+                }
+
+                .comment-like:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+
+                .comment-dot-divider {
+                    color: #8A8D91;
+                    font-size: 2px;
+                    padding: 0px 4px;
+                }
+
+                .comment-time-ago {
+                    font-size: 12px;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    color: #65676B;
+                }
+            }
+        }
+    }
+}

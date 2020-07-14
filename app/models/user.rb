@@ -14,6 +14,10 @@ class User < ApplicationRecord
         foreign_key: :receiver_id,
         class_name: :Post
 
+    has_many :authored_comments,
+        foreign_key: :author_id,
+        class_name: :Comment
+
     has_one_attached :profile_picture
 
     has_one_attached :cover_photo

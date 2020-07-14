@@ -13,9 +13,11 @@ class Profile extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        // debugger
         if(prevProps.location.pathname !== this.props.location.pathname) {
             this.props.userPost(this.props.match.params.userId);
         }
+
     }
 
     render() {

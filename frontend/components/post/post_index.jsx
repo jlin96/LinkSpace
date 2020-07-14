@@ -7,11 +7,11 @@ class PostIndex extends React.Component {
     }
 
     render () {
-        if (this.props.user === undefined || this.props.posts === {}) {
+        if (this.props.user === undefined || this.props.posts === {} || this.props.posts === undefined) {
             return null;
         }
-        debugger
-        const { user, currentUser, openModal, users, currentPost} = this.props
+        // debugger
+        const { user, currentUser, openModal, users, currentPost, createComment, fetchComments, deleteComment } = this.props
         const postIndexLi = Object.values(this.props.posts).reverse().map( (post, idx) => {
             return (
                 <PostIndexItem 
@@ -20,8 +20,11 @@ class PostIndex extends React.Component {
                     user={user} 
                     currentUser={currentUser} 
                     openModal={openModal}
+                    fetchComments={fetchComments}
                     users={users}
                     currentPost={currentPost}
+                    createComment={createComment}
+                    deleteComment={deleteComment}
                 />
             )
         })
