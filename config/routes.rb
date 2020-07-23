@@ -8,12 +8,14 @@ Rails.application.routes.draw do
       member do
         get :posts
       end
+      resources :friend_requests, only: [:index]
     end
     resource :session, only: [:create, :destroy]
     resources :posts, only: [:create, :show, :index, :update, :destroy] do
       resources :comments, only: [:index]
     end
     resources :comments, only: [:create, :update, :destroy]
+    resources :friend_requests, only: [:create, :update, :destroy]
   end
 
 end

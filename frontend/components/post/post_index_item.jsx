@@ -18,13 +18,7 @@ class PostIndexItem extends React.Component {
     componentDidMount() {
         this.props.fetchComments(this.props.post.id);
     }
-
-    // componentDidUpdate(prevProps) {
-    //     debugger
-    //     if (prevProps.post !== this.props.post) {
-    //     }
-    // }
-
+    
     selfPostOrFriend() {
         const {users, post} = this.props
         if(this.props.post.author_id === this.props.post.receiver_id) {
